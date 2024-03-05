@@ -2,25 +2,33 @@
 
 using namespace std;
 
-class Human_character
+class humanCharacter
 {
 private:
     string name;
     int age;
+    humanCharacter() = default;
 public:
     void setName(string name){
         this->name = name;
     }
-    Human_character(/* args */);
-    ~Human_character();
+    humanCharacter(string name , int age);
+    void setAge(int age){
+        this->age = age;
+    }
+    string getName(){
+        return name;
+    }
+    int getAge(){
+        return age;
+    }
 };
-Human_character::Human_character(/* args */)
+humanCharacter::humanCharacter(string name , int age)
 {
+    this->age = age;
+    this->name = name;
 }
 
-Human_character::~Human_character()
-{
-}
 
 
 int main(){
