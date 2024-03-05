@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -13,46 +13,54 @@ private:
     int age;
 
     humanCharacter() = default;
+
 public:
     humanCharacter(string name, string gender, int age);
 
-    void increaseHealth(int number){
+    void increaseHealth(int number)
+    {
         health += number;
     }
-    void decreaseHealth(int number){
+    void decreaseHealth(int number)
+    {
         health -= number;
     }
 
-    void incraseStamina(int number){
+    void incraseStamina(int number)
+    {
         stamina += number;
     }
-    void decreaseStamina(int number){
+    void decreaseStamina(int number)
+    {
         stamina -= number;
     }
 
-    string getName(){
+    string getName()
+    {
         return name;
     }
-    void setName(string name){
+    void setName(string name)
+    {
         this->name = name;
     }
 
-    int getAge(){
+    int getAge()
+    {
         return age;
     }
-    void setAge(int age){
+    void setAge(int age)
+    {
         this->age = age;
     }
 
-    string getGender(){
+    string getGender()
+    {
         this->gender = gender;
     }
-    void setGender(string gender){
+    void setGender(string gender)
+    {
         this->gender = gender;
     }
-
-
-
 };
 humanCharacter::humanCharacter(string name, string gender, int age)
 {
@@ -61,7 +69,6 @@ humanCharacter::humanCharacter(string name, string gender, int age)
     this->age = age;
 }
 
-
 class zombie
 {
 private:
@@ -69,10 +76,11 @@ private:
     int damagePower;
 
     zombie() = default;
+
 public:
     zombie(int health, int damagePower);
-    void attack(){
-
+    void attack()
+    {
     }
 };
 zombie::zombie(int health, int damagePower)
@@ -81,7 +89,6 @@ zombie::zombie(int health, int damagePower)
     this->damagePower = damagePower;
 }
 
-
 class strongZombie
 {
 private:
@@ -89,18 +96,18 @@ private:
     int damagePower;
 
     strongZombie() = default;
+
 public:
     strongZombie(int health, int damagePower);
-    void attack(){
-
+    void attack()
+    {
     }
 };
-strongZombie::strongZombie(int health , int damagePower)
+strongZombie::strongZombie(int health, int damagePower)
 {
     this->health = health;
     this->damagePower = damagePower;
 }
-
 
 class firearm
 {
@@ -110,30 +117,36 @@ private:
     int price;
 
     firearm() = default;
+
 public:
     firearm(string name, int damage, int price);
 
-    void setName(string name){
+    void setName(string name)
+    {
         this->name = name;
     }
-    string getName(){
+    string getName()
+    {
         return name;
     }
 
-    void setDamage(int damage){
+    void setDamage(int damage)
+    {
         this->damage = damage;
     }
-    int getDamage(){
+    int getDamage()
+    {
         return damage;
     }
 
-    void setPrice(int price){
+    void setPrice(int price)
+    {
         this->price = price;
     }
-    int getPrice(){
+    int getPrice()
+    {
         return price;
     }
-
 };
 firearm::firearm(string name, int damage, int price)
 {
@@ -141,7 +154,6 @@ firearm::firearm(string name, int damage, int price)
     this->damage = damage;
     this->price = price;
 }
-
 
 class coldWeapon
 {
@@ -151,30 +163,36 @@ private:
     int price;
 
     coldWeapon() = default;
+
 public:
     coldWeapon(string name, int damage, int price);
 
-    void setName(string name){
+    void setName(string name)
+    {
         this->name = name;
     }
-    string getName(){
+    string getName()
+    {
         return name;
     }
 
-    void setDamage(int damage){
+    void setDamage(int damage)
+    {
         this->damage = damage;
     }
-    int getDamage(){
+    int getDamage()
+    {
         return damage;
     }
 
-    void setPrice(int price){
+    void setPrice(int price)
+    {
         this->price = price;
     }
-    int getPrice(){
+    int getPrice()
+    {
         return price;
     }
-
 };
 coldWeapon::coldWeapon(string name, int damage, int price)
 {
@@ -182,7 +200,6 @@ coldWeapon::coldWeapon(string name, int damage, int price)
     this->damage = damage;
     this->price = price;
 }
-
 
 class throwableWeapon
 {
@@ -192,30 +209,36 @@ private:
     int price;
 
     throwableWeapon() = default;
+
 public:
     throwableWeapon(string name, int damage, int price);
 
-    void setName(string name){
+    void setName(string name)
+    {
         this->name = name;
     }
-    string getName(){
+    string getName()
+    {
         return name;
     }
 
-    void setDamage(int damage){
+    void setDamage(int damage)
+    {
         this->damage = damage;
     }
-    int getDamage(){
+    int getDamage()
+    {
         return damage;
     }
 
-    void setPrice(int price){
+    void setPrice(int price)
+    {
         this->price = price;
     }
-    int getPrice(){
+    int getPrice()
+    {
         return price;
     }
-
 };
 throwableWeapon::throwableWeapon(string name, int damage, int price)
 {
@@ -224,34 +247,27 @@ throwableWeapon::throwableWeapon(string name, int damage, int price)
     this->price = price;
 }
 
-
 class shop
 {
 private:
-    //Firearms
+    // Firearms
     firearm gun1;
     firearm gun2;
     firearm granade;
     firearm granade2;
-    //Cold Weapons
+    // Cold Weapons
     coldWeapon knife;
     coldWeapon knife2;
-    //Throwable
+    coldWeapon knife3;
+    // Throwable
 
     shop(/* args */);
-
 };
 
 // shop::shop(/* args */)
 // {
 // }
 
-
-
-
-
-
-
-int main(){
-    
+int main()
+{
 }
