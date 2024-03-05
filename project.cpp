@@ -6,28 +6,103 @@ class humanCharacter
 {
 private:
     string name;
+    string gender;
+    int health = 100;
+    int stamina = 100;
+    int level;
     int age;
+
     humanCharacter() = default;
 public:
-    void setName(string name){
-        this->name = name;
+    humanCharacter(string name, string gender, int age);
+
+    void increaseHealth(int number){
+        health += number;
     }
-    humanCharacter(string name , int age);
-    void setAge(int age){
-        this->age = age;
+    void decreaseHealth(int number){
+        health -= number;
     }
+
+    void incraseStamina(int number){
+        stamina += number;
+    }
+    void decreaseStamina(int number){
+        stamina -= number;
+    }
+
     string getName(){
         return name;
     }
+    void setName(string name){
+        this->name = name;
+    }
+
     int getAge(){
         return age;
     }
+    void setAge(int age){
+        this->age = age;
+    }
+
+    string getGender(){
+        this->gender = gender;
+    }
+    void setGender(string gender){
+        this->gender = gender;
+    }
+
+
+
 };
-humanCharacter::humanCharacter(string name , int age)
+humanCharacter::humanCharacter(string name, string gender, int age)
 {
-    this->age = age;
     this->name = name;
+    this->gender = gender;
+    this->age = age;
 }
+
+
+class zombie
+{
+private:
+    int health;
+    int damagePower;
+
+    zombie() = default;
+public:
+    zombie(int health, int damagePower);
+    void attack(){
+
+    }
+};
+zombie::zombie(int health, int damagePower)
+{
+    this->health = health;
+    this->damagePower = damagePower;
+}
+
+
+class strongZombie
+{
+private:
+    int health;
+    int damagePower;
+
+    strongZombie() = default;
+public:
+    strongZombie(int health, int damagePower);
+    void attack(){
+        
+    }
+};
+
+strongZombie::strongZombie(int health , int damagePower)
+{
+    this->health = health;
+    this->damagePower = damagePower;
+}
+
+
 
 
 
