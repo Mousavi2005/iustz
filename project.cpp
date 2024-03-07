@@ -260,13 +260,169 @@ private:
     coldWeapon knife2;
     coldWeapon knife3;
     // Throwable
+    throwableWeapon stone;
+    throwableWeapon ninjaStar;
+    throwableWeapon TRknife;
 
-    shop(/* args */);
+    int money;
+public:
+    void increaseMoney(int m){
+        money += m;
+    }
+    void decreaseMoney(int m){
+        money -= m;
+    }
+    void showShop(){
+        cout << "[1] " << gun1.getName() << "   " << gun1.getPrice() << " $" << endl;
+        cout << "[2] " << gun2.getName() << "   " << gun2.getPrice() << " $" << endl;
+        cout << "[3] " << granade.getName() << "   " << granade.getPrice() << " $" << endl;
+        cout << "[4] " << granade2.getName() << "   " << granade2.getPrice() << " $" << endl;
+        cout << "[5] " << knife.getName() << "   " << knife.getPrice() << " $" << endl;
+        cout << "[6] " << knife2.getName() << "   " << knife2.getPrice() << " $" << endl;
+        cout << "[7] " << knife3.getName() << "   " << knife3.getPrice() << " $" << endl;
+        cout << "[8] " << stone.getName() << "   " << stone.getPrice() << " $" << endl;
+        cout << "[9] " << ninjaStar.getName() << "   " << ninjaStar.getPrice() << " $" << endl;
+        cout << "[10] " << TRknife.getName() << "   " << TRknife.getPrice() << " $" << endl;
+
+
+    }
+    void buyItem(int option){
+        if (option == 1)
+        {
+            if (money >= gun1.getPrice())
+            {
+                /* code */
+                money -= gun1.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        else if (option == 2)
+        {
+            if (money >= gun2.getPrice())
+            {
+                /* code */
+                money -= gun2.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        else if (option == 3)
+        {
+            if (money >= granade.getPrice())
+            {
+                /* code */
+                money -= granade.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        else if (option == 4)
+        {
+            if (money >= granade2.getPrice())
+            {
+                /* code */
+                money -= granade2.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        else if (option == 5)
+        {
+            if (money >= knife.getPrice())
+            {
+                /* code */
+                money -= knife.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        else if (option == 6)
+        {
+            if (money >= knife2.getPrice())
+            {
+                /* code */
+                money -= knife2.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        else if (option == 7)
+        {
+            if (money >= knife3.getPrice())
+            {
+                /* code */
+                money -= knife3.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        else if (option == 8)
+        {
+            if (money >= stone.getPrice())
+            {
+                /* code */
+                money -= stone.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        else if (option == 9)
+        {
+            if (money >= ninjaStar.getPrice())
+            {
+                /* code */
+                money -= ninjaStar.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        else if (option == 10)
+        {
+            if (money >= TRknife.getPrice())
+            {
+                /* code */
+                money -= TRknife.getPrice();
+            }
+            else
+            {
+                cout << "You don't have enough money!" << endl;
+            }
+            
+        }
+        
+
+    }
 };
 
-// shop::shop(/* args */)
-// {
-// }
+
 
 int main()
 {
