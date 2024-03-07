@@ -423,6 +423,69 @@ public:
 };
 
 
+class backPack{
+private:
+    // Firearms
+    firearm gun1;
+    firearm gun2;
+    firearm granade;
+    firearm granade2;
+    // Cold Weapons
+    coldWeapon knife;
+    coldWeapon knife2;
+    coldWeapon knife3;
+    //Throwable
+    throwableWeapon stone;
+    throwableWeapon ninjaStar;
+    throwableWeapon TRknife;
+
+public:
+    void addItem(int option){
+        if (option == 1)
+        {
+            /* Add gun1 to backpack */
+        }
+        else if (option == 2)
+        {
+            /* Add gun2 to backpack */
+        }
+        else if (option == 3)
+        {
+            /* Add granade to backpack */
+        }
+        else if (option == 4)
+        {
+            /* Add granade2 to backpack */
+        }
+        else if (option == 5)
+        {
+            /* Add knife to backpack */
+        }
+        else if (option == 6)
+        {
+            /* Add knife2 to backpack */
+        }
+        else if (option == 7)
+        {
+            /* Add knife3 to backpack */
+        }
+        else if (option == 8)
+        {
+            /* Add stone to backpack */
+        }
+        else if (option == 9)
+        {
+            /* Add ninjastar to backpack */
+        }
+        else if (option == 10)
+        {
+            /* Add TRknife to backpack */
+        }
+
+    }
+
+};
+
 
 int main()
 {
