@@ -55,7 +55,7 @@ public:
 
     string getGender()
     {
-        this->gender = gender;
+        return gender;
     }
     void setGender(string gender)
     {
@@ -115,11 +115,11 @@ private:
     string name;
     int damage;
     int price;
-
+    bool Lock;
     firearm() = default;
 
 public:
-    firearm(string name, int damage, int price);
+    firearm(string name, int damage, int price,bool Lock);
 
     void setName(string name)
     {
@@ -147,12 +147,19 @@ public:
     {
         return price;
     }
+    void setLock(bool lock) {
+        this->Lock = lock;
+    }
+    bool getLock() {
+        return Lock;
+    }
 };
-firearm::firearm(string name, int damage, int price)
+firearm::firearm(string name, int damage, int price,bool Lock)
 {
     this->name = name;
     this->damage = damage;
     this->price = price;
+    this->Lock = Lock;
 }
 
 class coldWeapon
@@ -161,11 +168,11 @@ private:
     string name;
     int damage;
     int price;
-
+    bool Lock;
     coldWeapon() = default;
 
 public:
-    coldWeapon(string name, int damage, int price);
+    coldWeapon(string name, int damage, int price,bool Lock);
 
     void setName(string name)
     {
@@ -193,12 +200,19 @@ public:
     {
         return price;
     }
+        void setLock(bool lock) {
+        this->Lock = lock;
+    }
+    bool getLock() {
+        return Lock;
+    }
 };
-coldWeapon::coldWeapon(string name, int damage, int price)
+coldWeapon::coldWeapon(string name, int damage, int price,bool lock)
 {
     this->name = name;
     this->damage = damage;
     this->price = price;
+    this->Lock = lock;
 }
 
 class throwableWeapon
@@ -207,11 +221,11 @@ private:
     string name;
     int damage;
     int price;
-
+    bool Lock;
     throwableWeapon() = default;
 
 public:
-    throwableWeapon(string name, int damage, int price);
+    throwableWeapon(string name, int damage, int price,bool Lock);
 
     void setName(string name)
     {
@@ -239,22 +253,47 @@ public:
     {
         return price;
     }
+        void setLock(bool lock) {
+        this->Lock = lock;
+    }
+    bool getLock() {
+        return Lock;
+    }
 };
-throwableWeapon::throwableWeapon(string name, int damage, int price)
+throwableWeapon::throwableWeapon(string name, int damage, int price , bool lock)
 {
     this->name = name;
     this->damage = damage;
     this->price = price;
+    this->Lock = lock;
 }
 
+
+struct Backpack 
+{
+    firearm* gun1;
+    firearm* gun2;
+    firearm* grenade;
+    firearm* grenade2;
+    // Cold Weapons
+    coldWeapon* knife;
+    coldWeapon* knife2;
+    coldWeapon* knife3;
+    // Throwable
+    throwableWeapon* stone;
+    throwableWeapon* ninjaStar;
+    throwableWeapon* TRknife;
+    
+};
+static Backpack bag;
 class shop
 {
 private:
     // Firearms
     firearm gun1;
     firearm gun2;
-    firearm granade;
-    firearm granade2;
+    firearm grenade; 
+    firearm grenade2;
     // Cold Weapons
     coldWeapon knife;
     coldWeapon knife2;
@@ -275,8 +314,8 @@ public:
     void showShop(){
         cout << "[1] " << gun1.getName() << "   " << gun1.getPrice() << " $" << endl;
         cout << "[2] " << gun2.getName() << "   " << gun2.getPrice() << " $" << endl;
-        cout << "[3] " << granade.getName() << "   " << granade.getPrice() << " $" << endl;
-        cout << "[4] " << granade2.getName() << "   " << granade2.getPrice() << " $" << endl;
+        cout << "[3] " << grenade.getName() << "   " << grenade.getPrice() << " $" << endl;
+        cout << "[4] " << grenade2.getName() << "   " << grenade2.getPrice() << " $" << endl;
         cout << "[5] " << knife.getName() << "   " << knife.getPrice() << " $" << endl;
         cout << "[6] " << knife2.getName() << "   " << knife2.getPrice() << " $" << endl;
         cout << "[7] " << knife3.getName() << "   " << knife3.getPrice() << " $" << endl;
@@ -292,7 +331,12 @@ public:
             if (money >= gun1.getPrice())
             {
                 /* code */
+                if (bag.gun1->getLock()==true) {
                 money -= gun1.getPrice();
+                bag.gun1->setLock(false);    
+                }
+                
+               
             }
             else
             {
@@ -305,7 +349,11 @@ public:
             if (money >= gun2.getPrice())
             {
                 /* code */
-                money -= gun2.getPrice();
+                if(bag.gun2->getLock()==true) {
+                money -= gun2.getPrice();  
+                bag.gun2->setLock(false);  
+                }
+                
             }
             else
             {
@@ -315,10 +363,14 @@ public:
         }
         else if (option == 3)
         {
-            if (money >= granade.getPrice())
+            if (money >= grenade.getPrice())
             {
                 /* code */
-                money -= granade.getPrice();
+                if(bag.grenade->getLock()==true) {
+                money -= grenade.getPrice();  
+                bag.grenade->setLock(false);  
+                }
+                
             }
             else
             {
@@ -328,10 +380,13 @@ public:
         }
         else if (option == 4)
         {
-            if (money >= granade2.getPrice())
+            if (money >= grenade2.getPrice())
             {
                 /* code */
-                money -= granade2.getPrice();
+                if(bag.grenade2->getLock()==true) {
+                money -= grenade2.getPrice();  
+                bag.grenade2->setLock(false);  
+                }
             }
             else
             {
@@ -344,7 +399,10 @@ public:
             if (money >= knife.getPrice())
             {
                 /* code */
-                money -= knife.getPrice();
+                if(bag.knife->getLock()==true) {
+                money -= knife.getPrice();  
+                bag.knife->setLock(false);  
+                }
             }
             else
             {
@@ -357,7 +415,10 @@ public:
             if (money >= knife2.getPrice())
             {
                 /* code */
-                money -= knife2.getPrice();
+                if(bag.knife2->getLock()==true) {
+                money -= knife2.getPrice();  
+                bag.knife2->setLock(false);  
+                }
             }
             else
             {
@@ -370,7 +431,11 @@ public:
             if (money >= knife3.getPrice())
             {
                 /* code */
-                money -= knife3.getPrice();
+                if(bag.knife3->getLock()==true) {
+                money -= knife3.getPrice();  
+                bag.knife3->setLock(false);  
+                }
+               
             }
             else
             {
@@ -383,7 +448,11 @@ public:
             if (money >= stone.getPrice())
             {
                 /* code */
-                money -= stone.getPrice();
+                if(bag.stone->getLock()==true) {
+                money -= stone.getPrice();  
+                bag.stone->setLock(false);  
+                }
+                
             }
             else
             {
@@ -396,7 +465,10 @@ public:
             if (money >= ninjaStar.getPrice())
             {
                 /* code */
-                money -= ninjaStar.getPrice();
+                if(bag.ninjaStar->getLock()==true) {
+                money -= ninjaStar.getPrice();  
+                bag.ninjaStar->setLock(false);  
+                }
             }
             else
             {
@@ -409,7 +481,10 @@ public:
             if (money >= TRknife.getPrice())
             {
                 /* code */
-                money -= TRknife.getPrice();
+                if(bag.TRknife->getLock()==true) {
+                money -= TRknife.getPrice();  
+                bag.TRknife->setLock(false);  
+                }
             }
             else
             {
@@ -427,7 +502,7 @@ class Fight
 {
 public:
     //int InitiatorOfTheFight;
-    zombie ZombieOrHuman;
+    
     void ChoiceOfAction(string choice) {
         if (choice=="Upgread"){
 
@@ -441,12 +516,12 @@ public:
     }
 
 };
-int main() {
 
-    return 0;
-}
+
 
 
 int main()
 {
+    
+    return 0;
 }
