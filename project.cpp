@@ -602,6 +602,7 @@ int main()
     shop Shop = shop(shotgun,sniper,rifle,granade,knife,sword,bow,stoneSlinge,ninjaStar,needle);
 
     skills Skills;
+    Shop.showShop();
     
     return 0;
 }
