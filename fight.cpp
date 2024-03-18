@@ -1,5 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <stdlib.h>
+#include <string>
+#include <iomanip>
+//aghar selah garm bod damage fard ast va dar gheir in sorat zoj
 class Item
 {
 private:
@@ -106,13 +111,23 @@ private:
     int Stamina = 100;
     Item* CurrentWeapon;
     std::vector<Item*> Bagpack;
+    int SkillFire;
+    int SkillCold;
 public:
-    Character(std::string name,int health,int stamina,Item* currentWeapon,std::vector<Item*> bagpack) {
+    Character(std::string name,int health,int stamina,Item* currentWeapon,std::vector<Item*> bagpack, int skillfire,int skillcold) {
         Name = name;
         Health = health;
         Stamina = stamina;
         CurrentWeapon = currentWeapon;
         Bagpack = bagpack;
+        SkillCold = skillcold;
+        SkillFire = skillfire;
+    }
+    int GetSkillFire(){
+        return SkillFire;
+    }
+    int GetSkillCold(){
+        return SkillCold;
     }
     std::string GetName(){
         return Name;
@@ -129,6 +144,12 @@ public:
     std::vector<Item*> GetBagpack(){
         return Bagpack;
     }
+    void SetSkillFire(int fire) {
+        SkillFire = fire;
+    }
+    void SetSkillCold(int Cold) {
+        SkillCold = Cold;
+    }
     void SetName(std::string name) {
         Name =name;
     }
@@ -141,9 +162,16 @@ public:
     // void CurrentWeapon(Item* currentWeapon) {
     //     this->CurrentWeapon = currentWeapon;
     // }
-     void AddBagpack(Item* member) {
+    void AddBagpack(Item* member) {
         Bagpack.push_back(member);
-     }
+    }
+    void Injury(int a) {
+        Health -= a;
+    }
+    void Activity(int a) {
+        Stamina -= a;
+    }
+    
 };
 class HumanCharacter :public Character
 {
@@ -154,7 +182,7 @@ private:
     int Point;
     int Money;
 public:
-    HumanCharacter(std::string name,int health,int stamina,Item* currentWeapon,std::vector<Item*> bagpack,int age,std::string gender,int level,int point, int money) : Character( name, health, stamina, currentWeapon, bagpack) {
+    HumanCharacter(std::string name,int health,int stamina , Item* currentWeapon,std::vector<Item*> bagpack , int skilfire , int skillcold, int age,std::string gender,int level,int point, int money) : Character( name, health, stamina, currentWeapon, bagpack,skilfire, skillcold) {
         Age = age;
         Gender = gender;
         Level = level;
@@ -216,7 +244,7 @@ private:
     Consumables Food;
     HumanCharacter* Player;
 public:
-    Shop(HumanCharacter* player) : Gun1 (0, -10, 100, "gun1"),Gun2(0, -12, 140, "gun2") , Gun3(0, -17, 130, "gun3"), Grenade1(0, -8, 20, 1, "grenade1"), Grenade2(0, -20, 60, 1, "grenade2"), Stone(0, -3, 5, 1, "stone"), NinjaStar(0, -13, 20, 1, "ninjaStar"), TRknife(0, -8, 20, 1, "TRknife"), knife1(0, -8, 20, "knife1"), knife2(0, -8, 20, "knife2"), knife3(0, -8, 20, "knife3"),Beverage(+7,0,30,1,"drink"),Food(0,+6,3,1,"apple")
+    Shop(HumanCharacter* player) : Gun1 (0, 11, 100, "gun1"),Gun2(0, 13, 140, "gun2") , Gun3(0, 17, 130, "gun3"), Grenade1(0, 9, 20, 1, "grenade1"), Grenade2(0, 21, 60, 1, "grenade2"), Stone(0, 4, 5, 1, "stone"), NinjaStar(0, 14, 20, 1, "ninjaStar"), TRknife(0, 8, 20, 1, "TRknife"), knife1(0, 8, 20, "knife1"), knife2(0, 8, 20, "knife2"), knife3(0, 8, 20, "knife3"),Beverage(7,0,30,1,"drink"),Food(0,6,3,1,"apple")
         {
             Player = player;
         }
@@ -565,34 +593,250 @@ public:
     
     
 };
-class Model :public Character{};
-class Controller :public Model{};
+class Model :public Character
+{
+private:
+    std::string Type;
+    HumanCharacter* Player;
+    int MoneyEnemy;
+public:
+    Model(std::string name,int health,int stamina,Item* currentWeapon,std::vector<Item*> bagpack, int skillfire,int skillcold, int moneyenemy , std::string type ) :Character( name, health, stamina, currentWeapon, bagpack,skillfire, skillcold)
+    {
+        MoneyEnemy = moneyenemy;
+        Type = type;
+
+    }
+    HumanCharacter* GetPlyer()
+    {
+        return Player;
+    }
+    std::string GetType() 
+    {
+        return Type;
+    }
+    int GetMoney()
+    {
+        return MoneyEnemy;
+    }
+
+
+};
+enum class State
+{
+Upgrade,
+Item,
+Fight
+};
+class Controller 
+{
+private:
+    Model* Enemy;
+    HumanCharacter *Player;
+    State state;
+public:
+    Controller(Model* enemy,HumanCharacter *player) 
+    {
+    Enemy = enemy;
+    Player = player;
+    }
+    void StateFight()
+    {
+        if (Enemy->GetType()=="humanEnemy")
+        {
+
+        }
+        else
+        {
+            if ((Enemy->GetCurrentWeapon()->GetDamage()%2)==1) 
+            {
+                if (Enemy->GetStamina()>=2)
+                {
+                Player->Injury((Enemy->GetCurrentWeapon()->GetDamage()+Enemy->GetSkillFire()));
+                Enemy->Activity(2);
+                }
+                else
+                {
+                    std::cout <<"The Enemy does not have Stamina";
+                }
+            }
+            else 
+            {
+                if (Enemy->GetStamina()>=1)
+                {
+                Player->Injury((Enemy->GetCurrentWeapon()->GetDamage()+Enemy->GetSkillCold()));
+                Enemy->Activity(1);
+                }
+                else
+                {
+                    std::cout <<"The Enemy does not have Stamina";
+                }
+            }
+        }
+    }
+};
 class View :public Controller{};
 class Fight 
 {
-    
+private:
+Model*Enemy;
+HumanCharacter* Player;
+public:
+    Fight(Model*enemy,HumanCharacter* player)
+    {
+        Player = player;
+        Enemy = enemy;
+    }
+    void ChoiceOfAction(int choice) {
+        if (choice==1)
+        {
+            
+        }
+        else if (choice ==2) 
+        {
+          for (Item* i :Player->GetBagpack()) 
+          {
+            if (!(i->GetName() ==Player->GetCurrentWeapon()->GetName()))
+            {
+                std::cout<<i->GetName();
+                if (i->GetNumber()==1000000)
+                {
+                    std::cout <<"\n";
+                }
+                else
+                {
+                    std::cout <<"    Number: "<<i->GetNumber()<<"\n";
+                }
+            }
+          }  
+        }
+        else if (choice == 3) 
+        {
+
+        }
+    }
+
 };
 class CreateCharacter{};
-class Factory{};
+class Factory
+{
+private:
+    HumanCharacter * Player;
+    std::string Kind;
+public:
+    Factory(HumanCharacter * player,std::string kind) {
+        Kind = kind;
+        Player = player;
+    }
+Model* CreateModel() {
+    if (Kind =="zombie"){
+        srand(time(0));
+        std::string name;
+        char temp;
+        for (int i = 0 ; i < 6 ;i++) {
+            if (i == 0){
+                temp = (char)(rand()%26+65);
+                name+=temp; 
+            }
+            else {
+            temp=char(rand()%26+97);
+            name+=temp;  
+            }
+            
+        }
+        return new Model(name,(Player->GetHealth()+100),Player->GetStamina(),Player->GetCurrentWeapon(),Player->GetBagpack(),(Player->GetSkillFire()+10),Player->GetSkillCold(),Player->GetMoney(),"zombie");
+    }
+    else if (Kind == "strongZombie"){
+        srand(time(0));
+        std::string name;
+        char temp;
+        for (int i = 0 ; i < 6 ;i++) {
+            if (i == 0){
+                temp = (char)(rand()%26+65);
+                name+=temp; 
+            }
+            else {
+            temp=char(rand()%26+97);
+            name+=temp;  
+            }
+            
+        }
+        return new Model(name,(Player->GetHealth()+1000),Player->GetStamina(),Player->GetCurrentWeapon(),Player->GetBagpack(),(Player->GetSkillFire()+100),(Player->GetSkillCold()+100),Player->GetMoney(),"strongZombie");
+
+    }
+    else if (Kind == "humanEnemy") {
+        srand(time(0));
+        std::string name;
+        char temp;
+        for (int i = 0 ; i < 6 ;i++) {
+            if (i == 0){
+                temp = (char)(rand()%26+65);
+                name+=temp; 
+            }
+            else {
+            temp=char(rand()%26+97);
+            name+=temp;  
+            }
+            
+        }
+        std::vector <Item*>bag;
+        Firearm Gun1 (0, 11, 100, "gun1");
+        bag.push_back(&Gun1);
+        Firearm Gun2(0, 13, 140, "gun2");
+        bag.push_back(&Gun2);
+        Firearm Gun3(0, 17, 130, "gun3");
+        bag.push_back(&Gun3);
+        Throwable Grenade1(0, 9, 20, rand()%10 , "grenade1");
+        bag.push_back(&Grenade1);
+        Throwable Grenade2(0, 21, 60, rand()%10 , "grenade2");
+        bag.push_back(&Grenade2);
+        Throwable Stone(0, 4, 5, rand()%10 , "stone");
+        bag.push_back(&Stone);
+        Throwable NinjaStar(0, 14, 20, rand()%10 , "ninjaStar");
+        bag.push_back(&NinjaStar);
+        Throwable TRknife(0, 8, 20, rand()%10 , "TRknife");
+        bag.push_back(&TRknife);
+        ColdWeapon knife1(0, 8, 20, "knife1");
+        bag.push_back(&knife1);
+        ColdWeapon knife2(0, 8, 20, "knife2");
+        bag.push_back(&knife2);
+        ColdWeapon knife3(0, 8, 20, "knife3");
+        bag.push_back(&knife3);
+        Consumables Bevrage(7,0,30,rand()%10,"drink");
+        bag.push_back(&Bevrage);
+        Consumables Food(0,6,3,rand()%10,"apple");
+        bag.push_back(&Food);
+        return new Model(name,(Player->GetHealth()+rand()%1000+10) , (Player->GetStamina()+(Player->GetLevel()*10)),Player->GetCurrentWeapon(),bag ,(Player->GetSkillFire()+(Player->GetLevel()*10)),(Player->GetSkillCold()+(Player->GetLevel()*10)),Player->GetMoney(),"humanEnemy");
+
+    }
+return 0;
+}
+
+};
 int main(){
-    Permanent Gun11(0,-10,100,"Colt");
-    Throwable knife(0, -8, 20, 6, "grenade1");
+    Permanent Gun11(0,15,100,"gun1");
+    Throwable knife(0, 8, 20, 6, "grenade1");
+    ColdWeapon knife123(0,18,65,"asdfghjkl.lkjhgfdsaA");
+    Consumables fod(0,12,34,3,"banana");
     std::vector <Item*>bag;
+    bag.push_back(&fod);
     bag.push_back(&Gun11);
     bag.push_back(&knife);
-    Character hesam("hesam",100,100,&knife,bag);
+    bag.push_back(&knife123);
+    Character hesam("hesam",100,100,&knife,bag,34,6);
     //std::cout<< hesam.GetHealth();
-    Permanent Gun2();
-    HumanCharacter h("hesam",100,100,&Gun11,bag,18,"man",1,2,300);
     
-    Shop s(& h);
-    s.ShowShop();
+    HumanCharacter h("hesam",1000,1000,&Gun11,bag,37,10,18,"man",1,2,300);
+    Factory f(&h,"humanEnemy");
+    Fight sos(f.CreateModel(),&h);
+    sos.ChoiceOfAction(2);
+    //Shop s(& h);
+    //s.ShowShop();
+    //int q;
+    //std::cin >>q;
+    //s.BuyItem(q);
+    //std::cout<<h.GetBagpack().size();
+    //std::cout<<h.GetBagpack()[0]->GetNumber();
+        
     
-    int q;
-    std::cin >>q;
-    s.BuyItem(q);
-    
-    std::cout<<h.GetBagpack().size();
-    std::cout<<h.GetBagpack()[1]->GetNumber();
     return 0;
 }
