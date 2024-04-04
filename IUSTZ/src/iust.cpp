@@ -539,28 +539,47 @@
     void Fight::ChoiceOfAction(int choice) {
         if (choice==1)
         {
-            
+            // upgrading character
+            Shop::ShowShop;
+            int ItemNum;
+            std::cin >> ItemNum;
+            // Shop::BuyItem(ItemNum);
         }
         else if (choice ==2) 
         {
-          for (Item* i :Player->GetBagpack()) 
-          {
-            if (!(i->GetName() ==Player->GetCurrentWeapon()->GetName()))
+            // using backpack items
+           for (Item* item :Player->GetBagpack()) 
+           {
+            if (!(item->GetName() ==Player->GetCurrentWeapon()->GetName()))
             {
-                std::cout<<i->GetName();
-                if (i->GetNumber()==1000000)
+                std::cout<<item->GetName();
+                if (item->GetNumber()==1000000)
                 {
                     std::cout <<"\n";
                 }
                 else
                 {
-                    std::cout <<"    Number: "<<i->GetNumber()<<"\n";
+                    std::cout <<"    Number: "<<item->GetNumber()<<"\n";
                 }
+            }
+            int Weapon , ConsumerItem;
+            std::cout << " Select your weapon \n";
+            std::cin >> Weapon;
+            std::cout << " Select your consumer item \n";
+            std::cin >>ConsumerItem;
+            if(item->GetNumber() == Weapon)
+            {
+                Player->SetCurrentWeapon(item);
+            }
+            if(item->GetNumber() == ConsumerItem)
+            {
+                Player->SetConsumerItem(item);
             }
           }  
         }
         else if (choice == 3) 
         {
+            // fighting
 
         }
     }
