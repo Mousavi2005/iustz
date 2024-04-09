@@ -101,6 +101,16 @@ bool Check_Gender(std::string name){
         return false;
 }
 
+bool Check_Age(int age){
+    if (age <= 0 or age >= 100)
+    {
+        return false;
+    }
+    else
+        return true;
+    
+}
+
 class Item
 {
 private:
@@ -1645,14 +1655,21 @@ int main(){
                 }
                 
             }
-            
 
-            // std::cout<<"Gender: " << std::endl;
-            // std::cin>>gender;
             std::cout << "\033[2J\033[1;1H";
 
-            std::cout<<"Age: " << std::endl;
-            std::cin>>age;
+            while (!Check_Age(age))
+            {
+                std::cout<<"Age: " << std::endl;
+                std::cin>>age;
+                std::cout << "\033[2J\033[1;1H";
+                if (Check_Age(age) == false)
+                {
+                    std::cout << "Invalid Age\n";
+                }
+
+            }
+            
             std::cout << "\033[2J\033[1;1H";
 
             
