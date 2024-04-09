@@ -1,12 +1,4 @@
-// Add clock function
-// ADD is_day function
-// ADD Delay function
-// Add some libraries
-// if it's night zombies deal more damage
-// change choice of action
-// Change human character
-// increase earning money by ratio remained
-
+// if it's night zombie deals more damage
 
 #include <iostream>
 #include <vector>
@@ -30,6 +22,98 @@
 #define WHITE "\033[37m"
 #define MAGENTA "\033[35m"
 #define CYAN "\033[36m"
+
+
+std::vector<std::string> Male_Zombie_name = {"Gravus","Mortimer","Vlad","Rott","Lurch","Brainsworth","Decayne","Ghoulio","Zandar","Asher"};
+std::vector<std::string> Feale_Zombie_name = {"Lorna","Zombella","Ravenna","Morgana","Celia","Zara","Svetlana","Evangeline","Zephyra","Azura"};
+
+std::string Random_MaleZombie_Name(std::vector<std::string> names){
+    srand(time(0));
+    int temp = rand() % 10;
+    if (temp == 0)
+    {
+        return names[0];
+    }
+    else if (temp == 1)
+    {
+        return names[1];
+    }
+    else if (temp == 2)
+    {
+        return names[21];
+    }
+    else if (temp == 3)
+    {
+        return names[3];
+    }
+    else if (temp == 4)
+    {
+        return names[4];
+    }
+    else if (temp == 5)
+    {
+        return names[5];
+    }
+    else if (temp == 6)
+    {
+        return names[6];
+    }
+    else if (temp == 7)
+    {
+        return names[7];
+    }
+    else if (temp == 8)
+    {
+        return names[8];
+    }
+    else 
+        return names[9];
+    
+}
+
+std::string Random_FemaleZombie_Name(std::vector<std::string> names){
+    srand(time(0));
+    int temp = rand() % 10;
+    if (temp == 0)
+    {
+        return names[0];
+    }
+    else if (temp == 1)
+    {
+        return names[1];
+    }
+    else if (temp == 2)
+    {
+        return names[21];
+    }
+    else if (temp == 3)
+    {
+        return names[3];
+    }
+    else if (temp == 4)
+    {
+        return names[4];
+    }
+    else if (temp == 5)
+    {
+        return names[5];
+    }
+    else if (temp == 6)
+    {
+        return names[6];
+    }
+    else if (temp == 7)
+    {
+        return names[7];
+    }
+    else if (temp == 8)
+    {
+        return names[8];
+    }
+    else 
+        return names[9];
+    
+}
 
 // fire energy=0
 //cold = 1
@@ -86,6 +170,7 @@ std::string Losing_Sentence(){
     {
         return "Unfortunetly victory eludes you this time";
     }
+    
 }
 
 bool Check_Gender(std::string name){
@@ -109,6 +194,34 @@ bool Check_Age(int age){
     else
         return true;
     
+}
+
+std::string Clock(){
+
+    auto currentTime = std::chrono::system_clock::now();
+
+    std::time_t time = std::chrono::system_clock::to_time_t(currentTime);
+    std::string currentTimeStr = std::ctime(&time);
+    std::string clock = currentTimeStr.substr(11,2);
+    return clock;
+}
+
+bool IS_Day(std::string clock){
+    int x = std::stoi(clock);
+    if (18 <= x or x <= 5)
+    {
+        return false;
+    }
+    else{
+        return true;
+    }
+
+}
+
+void delay(int seconds) {
+    
+    std::this_thread::sleep_for(std::chrono::seconds(seconds));
+
 }
 
 class Item
@@ -827,13 +940,17 @@ class Controller
 {
 private:
     Model* Enemy;
-    HumanCharacter *Player;
+    std::vector<HumanCharacter*> Players;
     State state;
 public:
-    Controller(Model* enemy,HumanCharacter *player) 
+    Controller(Model* enemy,std::vector<HumanCharacter*> players) 
     {
     Enemy = enemy;
-    Player = player;
+    for (int i = 0; i < Players.size(); i++)
+    {
+        Players[i] = players[i];
+    }
+    
     }
     void StateFight(State action)
     {
@@ -852,7 +969,12 @@ public:
                 {
                     if (Enemy->GetStamina()>=20)
                     {
-                        Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillFire()));
+                        for (int i = 0; i < Players.size(); i++)
+                        {
+                            Players[i]->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillFire()));
+                        }
+                        
+                        // Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillFire()));
                         Enemy->Activity(1,20);
                     }
                     else
@@ -889,7 +1011,12 @@ public:
                         {
                             if (Enemy->GetConsumerItem()->GetNumber()>=1)
                             {
-                                Player->Injury(1,Enemy->GetConsumerItem()->GetDamage());
+                                for (int i = 0; i < Players.size(); i++)
+                                {
+                                    Players[i]->Injury(1,Enemy->GetConsumerItem()->GetDamage());
+                                }
+                                
+                                // Player->Injury(1,Enemy->GetConsumerItem()->GetDamage());
                                 Enemy->GetConsumerItem()->ReduceNumber(1);
                                 //Player->Activity(1,10);
                             }
@@ -898,7 +1025,11 @@ public:
                    }
                    if (Enemy->GetStamina()>=20)
                     {
-                        Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillFire()));
+                        for (int i = 0; i < Players.size(); i++)
+                        {
+                            Players[i]->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillFire()));
+                        }
+                        // Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillFire()));
                         Enemy->Activity(1,20);
                     }
                     else
@@ -915,8 +1046,13 @@ public:
                     if (Enemy->GetConsumerItem()->GetNumber() == 0)
                 {
                     if (Enemy->GetStamina()>=10)
-                    {
-                        Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillCold()));
+                    {  
+                        for (int i = 0; i < Players.size(); i++)
+                        {
+                            Players[i]->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillCold()));
+                        }
+                        
+                        // Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillCold()));
                         Enemy->Activity(1,10);
                     }
                     else
@@ -953,7 +1089,12 @@ public:
                         {
                             if (Enemy->GetConsumerItem()->GetNumber()>=1)
                             {
-                                Player->Injury(1,Enemy->GetConsumerItem()->GetDamage());
+                                for (int i = 0; i < Players.size(); i++)
+                                {
+                                    Players[i]->Injury(1,Enemy->GetConsumerItem()->GetDamage());
+                                }
+                                
+                                // Player->Injury(1,Enemy->GetConsumerItem()->GetDamage());
                                 Enemy->GetConsumerItem()->ReduceNumber(1);
                                 //Player->Activity(1,10);
                             }
@@ -962,7 +1103,12 @@ public:
                    }
                    if (Enemy->GetStamina()>=10)
                     {
-                        Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillCold()));
+                        for (int i = 0; i < Players.size(); i++)
+                        {
+                            Players[i]->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillCold()));
+                        }
+                        
+                        // Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillCold()));
                         Enemy->Activity(1,10);
                     }
                     else
@@ -977,122 +1123,127 @@ public:
 
             break;
         case State::Item :
-            
-            if (Player->GetLevel()>10)
-            {
-                for(Item* i:Enemy->GetBagpack())
+            for(int i=0; i<Players.size();i++){
+                HumanCharacter* Player = Players[i];
+                if (Player->GetLevel()>10)
                 {
-                    if (i->GetEnergy() == 0)
+                    for(Item* i:Enemy->GetBagpack())
                     {
-                        if (i->GetDamage()*Enemy->GetSkillFire() > BigFire)
+                        if (i->GetEnergy() == 0)
                         {
-                            BigFire = i->GetDamage()*Enemy->GetSkillFire();
-                            BestFire = i;
-                        }
-                    }
-                    else if (i->GetEnergy() == 1)
-                    {
-                        if (i->GetDamage()*Enemy->GetSkillCold() > BigCold)
-                        {
-                            BigCold = i->GetDamage()*Enemy->GetSkillCold();
-                            BestCold = i;
-                        }
-                    }
-
-                }
-                if (BigCold > BigFire)
-                {
-                    Enemy->SetCurrentWeapon(BestCold);
-                }
-                else
-                {
-                    Enemy->SetCurrentWeapon(BestFire);
-                }
-                if ((Enemy->GetHealth() < 50) && !(Enemy->GetBagpack()[12] == 0))
-                {
-                  Enemy->SetConsumerItem(Enemy->GetBagpack()[12]);   
-                }
-                else
-                {
-                    for(Item* i :Enemy->GetBagpack())
-                    {
-                        if (i->GetEnergy() == 3)
-                        {
-                            if ((i->GetDamage()> BigConsumer) && !(i->GetNumber() == 0))
+                            if (i->GetDamage()*Enemy->GetSkillFire() > BigFire)
                             {
-                                BigConsumer = i->GetDamage();
-                                Enemy->SetConsumerItem(i);
+                                BigFire = i->GetDamage()*Enemy->GetSkillFire();
+                                BestFire = i;
+                            }
+                        }
+                        else if (i->GetEnergy() == 1)
+                        {
+                            if (i->GetDamage()*Enemy->GetSkillCold() > BigCold)
+                            {
+                                BigCold = i->GetDamage()*Enemy->GetSkillCold();
+                                BestCold = i;
+                            }
+                        }
+
+                    }
+                    if (BigCold > BigFire)
+                    {
+                        Enemy->SetCurrentWeapon(BestCold);
+                    }
+                    else
+                    {
+                        Enemy->SetCurrentWeapon(BestFire);
+                    }
+                    if ((Enemy->GetHealth() < 50) && !(Enemy->GetBagpack()[12] == 0))
+                    {
+                      Enemy->SetConsumerItem(Enemy->GetBagpack()[12]);   
+                    }
+                    else
+                    {
+                        for(Item* i :Enemy->GetBagpack())
+                        {
+                            if (i->GetEnergy() == 3)
+                            {
+                                if ((i->GetDamage()> BigConsumer) && !(i->GetNumber() == 0))
+                                {
+                                    BigConsumer = i->GetDamage();
+                                    Enemy->SetConsumerItem(i);
+                                }
                             }
                         }
                     }
                 }
-            }
-            else if (Player->GetLevel()>5)
-            {
-                for(Item* i:Enemy->GetBagpack())
+                else if (Player->GetLevel()>5)
                 {
-                    if (i->GetEnergy() == 0)
+                    for(Item* i:Enemy->GetBagpack())
                     {
-                        if (i->GetDamage()+Enemy->GetSkillFire() > BigFire)
+                        if (i->GetEnergy() == 0)
                         {
-                            BigFire = i->GetDamage()+Enemy->GetSkillFire();
-                            BestFire = i;
+                            if (i->GetDamage()+Enemy->GetSkillFire() > BigFire)
+                            {
+                                BigFire = i->GetDamage()+Enemy->GetSkillFire();
+                                BestFire = i;
+                            }
                         }
-                    }
-                    else if (i->GetEnergy() == 1)
-                    {
-                        if (i->GetDamage()+Enemy->GetSkillCold() > BigCold)
+                        else if (i->GetEnergy() == 1)
                         {
-                            BigCold = i->GetDamage()+Enemy->GetSkillCold();
-                            BestCold = i;
+                            if (i->GetDamage()+Enemy->GetSkillCold() > BigCold)
+                            {
+                                BigCold = i->GetDamage()+Enemy->GetSkillCold();
+                                BestCold = i;
+                            }
                         }
-                    }
 
-                }
-                if (BigCold > BigFire)
-                {
-                    Enemy->SetCurrentWeapon(BestCold);
-                }
-                else
-                {
-                    Enemy->SetCurrentWeapon(BestFire);
-                }
-
-            }
-            else if (Player->GetLevel()<5)
-            {
-                for(Item* i:Enemy->GetBagpack())
-                {
-                    if (i->GetEnergy() == 0)
-                    {
-                        if (i->GetDamage() > BigFire)
-                        {
-                            BigFire = i->GetDamage();
-                            BestFire = i;
-                        }
                     }
-                    else if (i->GetEnergy() == 1)
+                    if (BigCold > BigFire)
                     {
-                        if (i->GetDamage() > BigCold)
-                        {
-                            BigCold = i->GetDamage();
-                            BestCold = i;
-                        }
+                        Enemy->SetCurrentWeapon(BestCold);
+                    }
+                    else
+                    {
+                        Enemy->SetCurrentWeapon(BestFire);
                     }
 
                 }
-                if (BigCold > BigFire)
+                else if (Player->GetLevel()<5)
                 {
-                    Enemy->SetCurrentWeapon(BestCold);
-                }
-                else
-                {
-                    Enemy->SetCurrentWeapon(BestFire);
-                }
+                    for(Item* i:Enemy->GetBagpack())
+                    {
+                        if (i->GetEnergy() == 0)
+                        {
+                            if (i->GetDamage() > BigFire)
+                            {
+                                BigFire = i->GetDamage();
+                                BestFire = i;
+                            }
+                        }
+                        else if (i->GetEnergy() == 1)
+                        {
+                            if (i->GetDamage() > BigCold)
+                            {
+                                BigCold = i->GetDamage();
+                                BestCold = i;
+                            }
+                        }
 
-            }
+                    }
+                    if (BigCold > BigFire)
+                    {
+                        Enemy->SetCurrentWeapon(BestCold);
+                    }
+                    else
+                    {
+                        Enemy->SetCurrentWeapon(BestFire);
+                    }
+
+                }
             break;
+            }
         case State::Upgrade :
+        for (int i = 0; i < Players.size(); i++)
+        {
+            HumanCharacter* Player = Players[i];
             if (Player->GetLevel()>10)
             {
                 if (Enemy->GetCurrentWeapon()->GetEnergy() == 0)
@@ -1117,7 +1268,7 @@ public:
             }
             break;
        
-       
+        }
        } 
     }
     void ZombieFight()
@@ -1126,7 +1277,12 @@ public:
             {
                 if (Enemy->GetStamina()>=20)
                 {
-                Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillFire()));
+                for (int i = 0; i < Players.size(); i++)
+                {
+                    Players[i]->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillFire()));
+                }
+                
+                // Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillFire()));
                 Enemy->Activity(1,20);
                 }
                 else
@@ -1138,7 +1294,12 @@ public:
         {
                 if (Enemy->GetStamina()>=10)
                 {
-                Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillCold()));
+                for (int i = 0; i < Players.size(); i++)
+                {
+                    Players[i]->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillCold()));
+                }
+                
+                // Player->Injury(1,(Enemy->GetCurrentWeapon()->GetDamage()*Enemy->GetSkillCold()));
                 Enemy->Activity(1,10);
                 }
                 else
@@ -1177,7 +1338,9 @@ public:
         // Player = player;
         for (int i = 0; i < players.size(); i++)
         {
-            Players[i] = players[i];
+            // ---------------------------------------------------
+            Players.push_back(players[i]);
+            // Players[i] = players[i];
         }
         
         Enemy = enemy;
@@ -1386,7 +1549,9 @@ public:
         Kind = kind;
         for (int i = 0; i < players.size(); i++)
         {
-            Players[i] = players[i];
+            // --------------------------------------------------------------------
+            Players.push_back(players[i]);
+            // Players[i] = players[i];
         }
         
     }
@@ -1546,95 +1711,80 @@ return 0;
 }
  
 };
-
-std::string Clock(){
-
-    auto currentTime = std::chrono::system_clock::now();
-
-    std::time_t time = std::chrono::system_clock::to_time_t(currentTime);
-    std::string currentTimeStr = std::ctime(&time);
-    std::string clock = currentTimeStr.substr(11,2);
-    return clock;
-}
-
-bool IS_Day(std::string clock){
-    int x = std::stoi(clock);
-    if (18 <= x or x <= 5)
-    {
-        return false;
-    }
-    else{
-        return true;
-    }
-
-}
-
-// Pause execution for the specified number of seconds
-void delay(int seconds) {
-    
-    std::this_thread::sleep_for(std::chrono::seconds(seconds));
-
-}
-
-
 int main(){
+    srand(time(0));
 
     std::string u = Clock();
     bool t = IS_Day(u);
 
-    srand(time(0));
     
     ColdWeapon knife123(1,18,65,"asdfghjkl.lkjhgfdsaA");
     Consumables fod(0,12,34,3,"apple");
 
+    std::cout << "\n\n\n\n\n\n\n\n\n\n";
+    std::cout <<RED<<"                                                                             _     _\n";
+    std::cout <<RED<<"                                                          _______  _ __ ___ | |__ (_)\n";
+    std::cout <<RED<<"                                                         |_  / _  | '_ ` _  | '_  | |\n";
+    std::cout <<RED<<"                                                          / / (_) | | | | | | |_) | |\n";
+    std::cout <<RED<<"                                                         /_______/|_| |_| |_|_.__/|_|\n";
+    std::cout <<RED<<"\n";
+    std::cout <<GREEN<<"********************************************************************************************************************************************"<<"\n";
+    delay(3);
+
+    std::cout << "\n\n\n";
     // // Story
-    // std::cout << "In a not-so-distant future, a mysterious virus outbreak has ravaged the world,"<< std::endl;
-    // std::cout << "turning the majority of the population into mindless zombies."<< std::endl;
-    // std::cout << "The few remaining humans struggle to survive in a post-apocalyptic landscape filled with danger and despair." << std::endl;
-    // // delay(5);
+    std::cout << WHITE << "In a not-so-distant future, a mysterious virus outbreak has ravaged the world,"<< std::endl;
+    std::cout << "turning the majority of the population into mindless zombies."<< std::endl;
+    std::cout << "The few remaining humans struggle to survive in a post-apocalyptic landscape filled with danger and despair.\n\n" << std::endl;
+    delay(5);
 
-    // std::cout << "You, the player, wake up in an abandoned building, your memory hazy from the chaos that ensued."<< std::endl;
-    // std::cout << "As you step outside, you're greeted by the sight of crumbling buildings, overgrown vegetation,"<< std::endl;
-    // std::cout << "and the distant groans of the undead." << std::endl;
-    // std::cout << std::endl;
-    // std::cout << "You soon learn that survivors have grouped together in makeshift settlements, trying to rebuild "<< std::endl;
-    // std::cout << "some semblance of society amidst the chaos. But tensions rise as resources become scarce, and "<< std::endl;
-    // std::cout << "conflicts erupt between rival factions vying for control." << std::endl;
-    // std::cout << std::endl;
-    // // delay(5);
+    std::cout << "You, the player, wake up in an abandoned building, your memory hazy from the chaos that ensued."<< std::endl;
+    std::cout << "As you step outside, you're greeted by the sight of crumbling buildings, overgrown vegetation,"<< std::endl;
+    std::cout << "and the distant groans of the undead.\n" << std::endl;
+    std::cout << std::endl;
+    delay(5);
 
-    // std::cout << "Meanwhile, rumors spread of a powerful leader known as 'The Colonel,' who promises safety and "<< std::endl;
-    // std::cout << "salvation in exchange for absolute loyalty. Some survivors swear allegiance to him, while others "<< std::endl;
-    // std::cout << "see him as a tyrant exploiting the desperate for his own gain." << std::endl;
-    // std::cout << std::endl;
+    std::cout << "You soon learn that survivors have grouped together in makeshift settlements, trying to rebuild "<< std::endl;
+    std::cout << "some semblance of society amidst the chaos. But tensions rise as resources become scarce, and "<< std::endl;
+    std::cout << "conflicts erupt between rival factions vying for control.\n" << std::endl;
+    std::cout << std::endl;
+    delay(5);
 
-    // std::cout << "As you navigate this dangerous world, you'll encounter various characters with their own agendas "<< std::endl;
-    // std::cout << "and stories. You'll have to make tough decisions: Who can you trust? Will you join a faction, or "<< std::endl;
-    // std::cout << "remain independent? And ultimately, will you survive the looming human-zombie war that "<< std::endl;
-    // std::cout << "threatens to consume what's left of humanity?" << std::endl;
-    // std::cout << std::endl;
+    std::cout << "Meanwhile, rumors spread of a powerful leader known as 'The Colonel,' who promises safety and "<< std::endl;
+    std::cout << "salvation in exchange for absolute loyalty. Some survivors swear allegiance to him, while others "<< std::endl;
+    std::cout << "see him as a tyrant exploiting the desperate for his own gain.\n" << std::endl;
+    std::cout << std::endl;
+    delay(5);
 
-    // std::cout << "Prepare yourself, for in this world, every choice matters, and only the strong will survive." << std::endl;
-    // std::cout << "Good luck with your journey!" << std::endl;
-    // std::cout << std::endl;
+    std::cout << "As you navigate this dangerous world, you'll encounter various characters with their own agendas "<< std::endl;
+    std::cout << "and stories. You'll have to make tough decisions: Who can you trust? Will you join a faction, or "<< std::endl;
+    std::cout << "remain independent? And ultimately, will you survive the looming human-zombie war that "<< std::endl;
+    std::cout << "threatens to consume what's left of humanity?\n" << std::endl;
+    std::cout << std::endl;
+    delay(6);
+
+    std::cout << "Prepare yourself, for in this world, every choice matters, and only the strong will survive." << std::endl;
+    std::cout << "Good luck with your journey!\n" << std::endl;
+    std::cout << std::endl;
+    delay(4);
 
 
 
     // Create players
     std::vector <HumanCharacter*> players;
+
     while(true){
         input:
         int option1;
         std::cout << "Chose an option :" << std :: endl;
         std::cout << "1. Create Character " << std :: endl;
-        std::cout << "2. Exit " << std :: endl;
+        std::cout << "2. Start The Game " << std :: endl;
         std::cin >> option1;
-
-        // Clears screen
         std::cout << "\033[2J\033[1;1H";
 
         if(option1 == 1){
             //Create character
+
             std::cout << "Enter your name: " << std::endl;
             std ::string name,gender;
             int health,stamina, skilfire, skillcold, age, level, point, money;
@@ -1672,7 +1822,7 @@ int main(){
             
             std::cout << "\033[2J\033[1;1H";
 
-            
+
             std::vector<Item*>bag23;
             bag23.push_back(&Gun1);
             bag23.push_back(&fod);
@@ -1685,7 +1835,7 @@ int main(){
             break;
         }
         else{
-            std::cout << "Invalid Number!" << std::endl;
+            std::cout << "Invalid Option!" << std::endl;
             goto input;
         }
 
@@ -1714,224 +1864,309 @@ int main(){
     // HumanCharacter Player (name,1000,1000,&Gun1,&fod,bag23,8,10,age,gender,1,0,60);
     // HumanCharacter CopyPl =Player;
  
-
     
     // ---------------------------------------------------
-    // while (true)
-    // {   
-    //     int t = rand()%100;
+    while (true)
+    {   
+        int t = rand()%100;
         
-    //     if (t > 30)
-    //     {
-    //         std::cout<<"Select Enemy:\n1.Zombie\n2.Strong Zombie\n3.Human\n";
-    //         int Enemy;
-    //         std::cin>>Enemy;
+        if (t > 30)
+        {
+            std::cout<<"Select Enemy:\n1.Zombie\n2.Strong Zombie\n3.Human\n";
+            int Enemy;
+            std::cin>>Enemy;
             
-    //         if (Enemy ==1)
-    //         {
+            if (Enemy ==1)
+            {
                 
-    //             Factory zombie(players,"zombie");
-    //             Model* EnemyZombie = zombie.CreateModel();
-    //             //std::cout<<EnemyZombie->GetCurrentWeapon()->GetDamage();
-    //             Model* CopyEnemy = EnemyZombie;
-    //             View*view= (View*)CopyEnemy;
-    //             view->Display();
-    //             int random = rand()%2;
-    //             while (true)
-    //             {
-    //                 if(random == 0)
-    //                 {
-    //                     Fight displayFight(EnemyZombie,players);
-    //                     std::cout <<"\n1.Upgrade\n2.Items\n3.Fight\n";
-    //                     int t;
-    //                     std::cin >>t;
-    //                     displayFight.ChoiceOfAction(t);
-    //                     if (EnemyZombie->GetHealth() <= 0)
-    //                     {
-                            
-    //                         Player.ManageMoney(0,20);
-    //                         Player.IncreasePoint(50);
-    //                         Player.Injury(0,200);
-    //                         Player.Activity(0,100);
-    //                         if (Player.GetPoint()%100==0)
-    //                         Player.IncreaseLevel(1);
-    //                         std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
-    //                         break;
-    //                     }
-    //                     std::cout<<"Enemy Health:"<<EnemyZombie->GetHealth();
+                Factory zombie(players,"zombie");
+                Model* EnemyZombie = zombie.CreateModel();
+                //std::cout<<EnemyZombie->GetCurrentWeapon()->GetDamage();
+                Model* CopyEnemy = EnemyZombie;
+                View*view= (View*)CopyEnemy;
+                view->Display();
+                int random = rand()%2;
+                while (true)
+                {
+                    if(random == 0)
+                    {
+                        Fight displayFight(EnemyZombie,players);
+                        std::cout <<"\n1.Upgrade\n2.Items\n3.Fight\n";
+                        int t;
+                        std::cin >>t;
+                        displayFight.ChoiceOfAction(t);
 
-    //                     random++;
-    //                 }
+                        if (EnemyZombie->GetHealth() <= 0)
+                        {
+                            std::cout<< "You Are Win!";
+                            for (int i = 0; i < players.size(); i++)
+                            {
+                                HumanCharacter Player = *players[i];
+                                Player.ManageMoney(0,20);
+                                Player.IncreasePoint(50);
+                                Player.Injury(0,200);
+                                Player.Activity(0,100);
+                                if (Player.GetPoint()%100==0)
+                                Player.IncreaseLevel(1);
+                                std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                                
+
+                            }
+                            break;
+                        }
+                        std::cout<<"Enemy Health:"<<EnemyZombie->GetHealth();
+
+                        random++;
+                    }
                     
-    //                 if (random == 1)
-    //                 {
-    //                     Controller display(EnemyZombie,&Player);
-    //                     display.ZombieFight();
-    //                     if (Player.GetHealth() <= 0)
-    //                     {
-    //                         std::cout<<"\nYou Lost!\n";
-    //                         Player.SetHealth(500);
-    //                         Player.IncreasePoint(10);
-    //                         std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
-    //                         break;
-    //                     }
-    //                     std::cout<<"\nYuor Health :"<<Player.GetHealth();
-    //                     random--;
-    //                 }
-    //             }
-                
-                
-    //         }
-    //         else if(Enemy == 2)
-    //         {
-    //             Factory zombie(&Player,"strongZombie");
-    //             Model* EnemyZombie = zombie.CreateModel();
-    //             Model* CopyEnemy = EnemyZombie;
-    //             View*view= (View*)CopyEnemy;
-    //             view->Display();
-    //             int random = rand()%2;
-    //             while (true)
-    //             {
-    //                 if(random == 0)
-    //                 {
-    //                     Fight displayFight(EnemyZombie,players);
-    //                     std::cout <<"\n1.Upgrade\n2.Items\n3.Fight\n";
-    //                     int t;
-    //                     std::cin >>t;
-    //                     displayFight.ChoiceOfAction(t);
-    //                     if (EnemyZombie->GetHealth() <= 0)
-    //                     {
-    //                         std::cout<<"you are win.\n";
-    //                         Player.ManageMoney(0,20);
-    //                         Player.IncreasePoint(50);
-    //                         Player.Injury(0,200);
-    //                         Player.Activity(0,100);
-    //                         if (Player.GetPoint()%100==0)
-    //                         Player.IncreaseLevel(1);
-    //                         std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
-    //                         break;
-    //                     }
-    //                     std::cout<<"Enemy Health:"<<EnemyZombie->GetHealth();
-
-    //                     random++;
-    //                 }
-                    
-    //                 if (random == 1)
-    //                 {
-    //                     Controller display(EnemyZombie,&Player);
-    //                     display.ZombieFight();
-    //                     if (Player.GetHealth() <= 0)
-    //                     {
-    //                         std::cout<<"\nYou Lost!\n";
-    //                         Player.SetHealth(500);
-    //                         Player.IncreasePoint(10);
-    //                         std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
-    //                         break;
-    //                     }
-    //                     std::cout<<"\nYou`re Health :"<<Player.GetHealth();
-    //                     random--;
-    //                 }
-    //             }
-    //         }
-    //         else if(Enemy == 3)
-    //         {
-    //             Factory HumanEnemy(&Player,"HumanEnemy");
-    //             Model* EnemyHuman = HumanEnemy.CreateModel();
-    //             //std::cout<<EnemyZombie->GetCurrentWeapon()->GetDamage();
-    //             Model* CopyHumanEnemy = EnemyHuman;
-    //             View*view= (View*)CopyHumanEnemy;
-    //             view->Display();
-    //             int random = rand()%2;
-    //             while (true)
-    //             {
-    //                 if(random == 0)
-    //                 {
-    //                     Fight displayFight(EnemyHuman,players);
-    //                     std::cout <<"\n1.Upgrade\n2.Items\n3.Fight\n";
-    //                     int t;
-    //                     std::cin >>t;
-    //                     displayFight.ChoiceOfAction(t);
-    //                     if (EnemyHuman->GetHealth() <= 0)
-    //                     {
-    //                         std::cout<<"you are win.\n";
-    //                         Player.ManageMoney(0,20);
-    //                         Player.IncreasePoint(50);
-    //                         Player.Injury(0,200);
-    //                         Player.Activity(0,100);
-    //                         if (Player.GetPoint()%100==0)
-    //                         Player.IncreaseLevel(1);
-    //                         std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
-    //                         break;
-    //                     }
-    //                     std::cout<<"Enemy Health:"<<EnemyHuman->GetHealth();
-
-    //                     random++;
-    //                 }
-    //                 if(random == 1)
-    //                 {
-    //                     Controller display(EnemyHuman,&Player);
-    //                     int temp = 0;
-    //                     State s1 =  ManageState(&Player,EnemyHuman,State::Attack);
-    //                     display.StateFight(s1);
-    //                     if (s1 == State::Attack)
-    //                     {
-    //                         temp = 1;
-    //                     }
-    //                     if (temp == 0)
-    //                     {
-    //                         State s2 = ManageState(&Player,EnemyHuman,s1);
-    //                         display.StateFight(s2);
-    //                         if (s2 == State::Attack)
-    //                         {
-    //                             temp = 1;
-    //                         }
-    //                         if (temp == 0 )
-    //                         {
-    //                             State s3 = ManageState(&Player,EnemyHuman,s2);
-    //                             display.StateFight(s3);
-    //                         }
+                    if (random == 1)
+                    {
+                        Controller display(EnemyZombie,players);
+                        display.ZombieFight();
+                        int health_check = 0;
+                        for (int i = 0; i < players.size(); i++)
+                        {
+                            if (players[i]->GetHealth() > 0)
+                            {
+                                health_check = 1;
+                            }
                             
-    //                     }
-    //                     if (Player.GetHealth() <= 0)
-    //                     {
-    //                         std::cout<<"\nYou Lost!\n";
-    //                         Player.SetHealth(500);
-    //                         Player.IncreasePoint(10);
-    //                         std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
-    //                         break;
-    //                     }
+                        }
                         
-    //                     std::cout<<"\nYou`re Health :"<<Player.GetHealth();
-    //                     random--;
-    //                 }
-
-    //             }
+                        if (health_check == 0)
+                        {
+                            std::cout<<"\nYou Lost!\n";
+                            for (int i = 0; i < players.size(); i++)
+                            {
+                                // need to be check again
+                                HumanCharacter Player = *players[i];
+                                Player.SetHealth(500);
+                                Player.IncreasePoint(10);
+                                std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                                
+                            }
+                            
+                            // Player.SetHealth(500);
+                            // Player.IncreasePoint(10);
+                            // std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                            break;
+                        }
+                        // for (int i = 0; i < players.size(); i++)
+                        // {
+                        //     std::cout<<"\nYuor Health :"<< players[i].GetHealth();
+                        // }
+                        
+                        // std::cout<<"\nYuor Health :"<<Player.GetHealth();
+                        random--;
+                    }
+                }
                 
-    //         }
-
-    //     }
-    //     else
-    //     {
-    //         while (true)
-    //         {
-    //         int Option= 0;
-    //             Shop shop(&Player);
-    //             std::cout<<"Money :"<<Player.GetMoney()<<"$\n";
-    //             shop.ShowShop();
                 
-    //             std::cin >>Option;
-    //             if(Option >=14)
-    //             {
-    //                 break;
-    //             }
-    //             shop.BuyItem(Option);
-    //         }
+            }
+            else if(Enemy == 2)
+            {
+                Factory zombie(players,"strongZombie");
+                Model* EnemyZombie = zombie.CreateModel();
+                Model* CopyEnemy = EnemyZombie;
+                View*view= (View*)CopyEnemy;
+                view->Display();
+                int random = rand()%2;
+                while (true)
+                {
+                    if(random == 0)
+                    {
+                        Fight displayFight(EnemyZombie,players);
+                        std::cout <<"\n1.Upgrade\n2.Items\n3.Fight\n";
+                        int t;
+                        std::cin >>t;
+                        displayFight.ChoiceOfAction(t);
+                        if (EnemyZombie->GetHealth() <= 0)
+                        {
+                            std::cout<<"you are win.\n";
+                            for (int i = 0; i < players.size(); i++)
+                            {
+                                HumanCharacter Player = *players[i];
+                                Player.ManageMoney(0,20);
+                                Player.IncreasePoint(50);
+                                Player.Injury(0,200);
+                                Player.Activity(0,100);
+                                if (Player.GetPoint()%100==0)
+                                Player.IncreaseLevel(1);
+                                std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                            }
+                            
+                            // Player.ManageMoney(0,20);
+                            // Player.IncreasePoint(50);
+                            // Player.Injury(0,200);
+                            // Player.Activity(0,100);
+                            // if (Player.GetPoint()%100==0)
+                            // Player.IncreaseLevel(1);
+                            // std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                            break;
+                        }
+                        std::cout<<"Enemy Health:"<<EnemyZombie->GetHealth();
+
+                        random++;
+                    }
+                    
+                    if (random == 1)
+                    {
+                        // changing Controller
+                        Controller display(EnemyZombie,players);
+                        display.ZombieFight();
+                        int health_check = 0;
+                        for (int i = 0; i < players.size(); i++)
+                        {
+                            if (players[i]->GetHealth() > 0)
+                            {
+                                health_check = 1;
+                            }
+                            
+                        }
+                        
+                        if (health_check == 0)
+                        {
+                            std::cout<<"\nYou Lost!\n";
+                            for (int i = 0; i < players.size(); i++)
+                            {
+                                HumanCharacter Player = *players[i];
+                                Player.SetHealth(500);
+                                Player.IncreasePoint(10);
+                                std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                            }
+                            
+                            // Player.SetHealth(500);
+                            // Player.IncreasePoint(10);
+                            // std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                            break;
+                        }
+                        for (int i = 0; i < players.size(); i++)
+                        {
+                            HumanCharacter Player = *players[i];
+                            std::cout<<"\nYou`re Health :"<<Player.GetHealth();
+                        }
+                        
+                        // std::cout<<"\nYou`re Health :"<<Player.GetHealth();
+                        random--;
+                    }
+                }
+            }
+            else if(Enemy == 3)
+            {
+                Factory HumanEnemy(players,"HumanEnemy");
+                Model* EnemyHuman = HumanEnemy.CreateModel();
+                //std::cout<<EnemyZombie->GetCurrentWeapon()->GetDamage();
+                Model* CopyHumanEnemy = EnemyHuman;
+                View*view= (View*)CopyHumanEnemy;
+                view->Display();
+                int random = rand()%2;
+                while (true)
+                {
+                    if(random == 0)
+                    {
+                        Fight displayFight(EnemyHuman,players);
+                        std::cout <<"\n1.Upgrade\n2.Items\n3.Fight\n";
+                        int t;
+                        std::cin >>t;
+                        displayFight.ChoiceOfAction(t);
+                        if (EnemyHuman->GetHealth() <= 0)
+                        {
+                            std::cout<<"you are win.\n";
+                            for (int i = 0; i < players.size(); i++)
+                            {
+                                HumanCharacter Player = *players[i];
+                                Player.ManageMoney(0,20);
+                                Player.IncreasePoint(50);
+                                Player.Injury(0,200);
+                                Player.Activity(0,100);
+                                if (Player.GetPoint()%100==0)
+                                Player.IncreaseLevel(1);
+                                std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                            }
+                            
+                            // Player.ManageMoney(0,20);
+                            // Player.IncreasePoint(50);
+                            // Player.Injury(0,200);
+                            // Player.Activity(0,100);
+                            // if (Player.GetPoint()%100==0)
+                            // Player.IncreaseLevel(1);
+                            // std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                            break;
+                        }
+                        std::cout<<"Enemy Health:"<<EnemyHuman->GetHealth();
+
+                        random++;
+                    }
+                    if(random == 1)
+                    {
+                        Controller display(EnemyHuman,players);
+                        int temp = 0;
+                        HumanCharacter Player = *players[0];
+                        // need to correct ManageState
+
+
+
+                        
+
+                        State s1 =  ManageState(&Player,EnemyHuman,State::Attack);
+                        display.StateFight(s1);
+                        if (s1 == State::Attack)
+                        {
+                            temp = 1;
+                        }
+                        if (temp == 0)
+                        {
+                            State s2 = ManageState(&Player,EnemyHuman,s1);
+                            display.StateFight(s2);
+                            if (s2 == State::Attack)
+                            {
+                                temp = 1;
+                            }
+                            if (temp == 0 )
+                            {
+                                State s3 = ManageState(&Player,EnemyHuman,s2);
+                                display.StateFight(s3);
+                            }
+                            
+                        }
+                        if (Player.GetHealth() <= 0)
+                        {
+                            std::cout<<"\nYou Lost!\n";
+                            Player.SetHealth(500);
+                            Player.IncreasePoint(10);
+                            std::cout<<"\nHealth: "<<Player.GetHealth()<<"\nStamina: "<<Player.GetStamina()<<"\nLevel: "<<Player.GetLevel()<<"\nPoint: "<<Player.GetPoint()<<"\nMoney: "<<Player.GetMoney()<<" $\n";
+                            break;
+                        }
+                        
+                        std::cout<<"\nYou`re Health :"<<Player.GetHealth();
+                        random--;
+                    }
+
+                }
+                
+            }
+
+        }
+        else
+        {
+            while (true)
+            {
+            int Option= 0;
+            HumanCharacter Player = *players[0];
+                Shop shop(&Player);
+                std::cout<<"Money :"<<Player.GetMoney()<<"$\n";
+                shop.ShowShop();
+                
+                std::cin >>Option;
+                if(Option >=14)
+                {
+                    break;
+                }
+                shop.BuyItem(Option);
+            }
             
-    //     }
-    // }
-
-// ----------------------------------------
-
+        }
+    }
 
 
 
