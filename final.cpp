@@ -1,4 +1,11 @@
 // if it's night zombie deals more damage
+// Move between shop items and its handle
+// Move between Menu options and its handle
+// Create a character first
+
+
+// after going to items show manu changes
+
 
 #include <iostream>
 #include <vector>
@@ -11,6 +18,7 @@
 #include <ctime>
 #include <string>
 #include <thread>
+#include <conio.h>
 
 
 #define RESEt "\033[0m"
@@ -22,7 +30,9 @@
 #define WHITE "\033[37m"
 #define MAGENTA "\033[35m"
 #define CYAN "\033[36m"
+// #define TEMPC
 
+std::string tempc = "   -> ";
 
 std::vector<std::string> Male_Zombie_name = {"Gravus","Mortimer","Vlad","Rott","Lurch","Brainsworth","Decayne","Ghoulio","Zandar","Asher"};
 std::vector<std::string> Feale_Zombie_name = {"Lorna","Zombella","Ravenna","Morgana","Celia","Zara","Svetlana","Evangeline","Zephyra","Azura"};
@@ -222,6 +232,45 @@ void delay(int seconds) {
     
     std::this_thread::sleep_for(std::chrono::seconds(seconds));
 
+}
+
+void ShowOptions(int a){
+    if (a ==1 )
+    {
+        std::cout << "Chose an option :" << std :: endl;
+        std::cout << tempc << "1. Create Character " << std :: endl;
+        std::cout << "2. Start The Game " << std :: endl;
+    }
+    else
+    {
+        std::cout << "Chose an option :" << std :: endl;
+        std::cout << "1. Create Character " << std :: endl;
+        std::cout << tempc << "2. Start The Game " << std :: endl;
+    }
+
+}
+
+void ShowMenu(int a){
+    if (a == 1)
+    {
+        std::cout << "\n" << tempc <<"1.Upgrade\n";
+        std::cout <<"2.Items\n";
+        std::cout <<"3.Fight\n";
+    }
+    else if (a == 2)
+    {
+        std::cout << "\n" <<"1.Upgrade\n";
+        std::cout << tempc <<"2.Items\n";
+        std::cout <<"3.Fight\n";
+    }
+    else
+    {
+        std::cout << "\n" <<"1.Upgrade\n";
+        std::cout <<"2.Items\n";
+        std::cout << tempc <<"3.Fight\n";
+    }
+    
+    
 }
 
 class Item
@@ -507,24 +556,292 @@ public:
         
         
     }
-    void ShowShop()
+    void ShowShop(int a)
     {   
-        std::cout<< "Welcome to shop \n";
-        std::cout<<"----------------------------------- \n";
-        std::cout<<"1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-        std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-        std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-        std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
-        std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-        std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-        std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-        std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-        std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-        std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-        std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-        std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-        std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
-        std::cout << "14." << RED << "Exit\n" << WHITE;
+        if (a == 1)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< tempc << "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }
+        else if (a == 2)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<< tempc <<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }
+        else if (a == 3)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<< tempc <<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }
+        else if (a == 4)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<<"1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<< tempc <<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }        
+        else if (a == 5)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<< tempc <<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }        
+        else if (a == 6)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<< tempc <<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }        
+        else if (a == 7)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< tempc << "7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }        
+        else if (a == 8)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< tempc << "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }
+        else if (a == 9)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< tempc <<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }
+        else if (a == 10)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<< tempc << "10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }
+        else if (a == 11)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< tempc << "11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }
+        else if (a == 12)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< tempc << "12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }
+        else if (a == 13)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< tempc << "13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << "14." << RED << "Exit\n" << WHITE;
+        }
+        else if (a == 14)
+        {
+            std::cout<< "Welcome to shop \n";
+            std::cout<<"----------------------------------- \n";
+            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<< tempc << "14." << RED << "Exit\n" << WHITE;
+        }
+        
+        
+        // std::cout<< "Welcome to shop \n";
+        // std::cout<<"----------------------------------- \n";
+        // std::cout<<"1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+        // std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+        // std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+        // std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+        // std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+        // std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+        // std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+        // std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+        // std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
+        // std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+        // std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+        // std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+        // std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+        // std::cout << "14." << RED << "Exit\n" << WHITE;
 
     }
     void BuyItem(int Option)
@@ -1539,6 +1856,7 @@ public:
 
 };
 
+
 class Factory
 {
 private:
@@ -1721,70 +2039,120 @@ int main(){
     ColdWeapon knife123(1,18,65,"asdfghjkl.lkjhgfdsaA");
     Consumables fod(0,12,34,3,"apple");
 
-    std::cout << "\n\n\n\n\n\n\n\n\n\n";
-    std::cout <<RED<<"                                                                             _     _\n";
-    std::cout <<RED<<"                                                          _______  _ __ ___ | |__ (_)\n";
-    std::cout <<RED<<"                                                         |_  / _  | '_ ` _  | '_  | |\n";
-    std::cout <<RED<<"                                                          / / (_) | | | | | | |_) | |\n";
-    std::cout <<RED<<"                                                         /_______/|_| |_| |_|_.__/|_|\n";
-    std::cout <<RED<<"\n";
-    std::cout <<GREEN<<"********************************************************************************************************************************************"<<"\n";
-    delay(3);
+    // Game story:
 
-    std::cout << "\n\n\n";
-    // // Story
-    std::cout << WHITE << "In a not-so-distant future, a mysterious virus outbreak has ravaged the world,"<< std::endl;
-    std::cout << "turning the majority of the population into mindless zombies."<< std::endl;
-    std::cout << "The few remaining humans struggle to survive in a post-apocalyptic landscape filled with danger and despair.\n\n" << std::endl;
-    delay(5);
+    // std::cout << "\n\n\n\n\n\n\n\n\n\n";
+    // std::cout <<RED<<"                                                                             _     _\n";
+    // std::cout <<RED<<"                                                          _______  _ __ ___ | |__ (_)\n";
+    // std::cout <<RED<<"                                                         |_  / _  | '_ ` _  | '_  | |\n";
+    // std::cout <<RED<<"                                                          / / (_) | | | | | | |_) | |\n";
+    // std::cout <<RED<<"                                                         /_______/|_| |_| |_|_.__/|_|\n";
+    // std::cout <<RED<<"\n";
+    // std::cout <<GREEN<<"********************************************************************************************************************************************"<<"\n";
+    // delay(3);
 
-    std::cout << "You, the player, wake up in an abandoned building, your memory hazy from the chaos that ensued."<< std::endl;
-    std::cout << "As you step outside, you're greeted by the sight of crumbling buildings, overgrown vegetation,"<< std::endl;
-    std::cout << "and the distant groans of the undead.\n" << std::endl;
-    std::cout << std::endl;
-    delay(5);
+    // std::cout << "\n\n\n";
+    // // // Story
+    // std::cout << WHITE << "In a not-so-distant future, a mysterious virus outbreak has ravaged the world,"<< std::endl;
+    // std::cout << "turning the majority of the population into mindless zombies."<< std::endl;
+    // std::cout << "The few remaining humans struggle to survive in a post-apocalyptic landscape filled with danger and despair.\n\n" << std::endl;
+    // delay(5);
 
-    std::cout << "You soon learn that survivors have grouped together in makeshift settlements, trying to rebuild "<< std::endl;
-    std::cout << "some semblance of society amidst the chaos. But tensions rise as resources become scarce, and "<< std::endl;
-    std::cout << "conflicts erupt between rival factions vying for control.\n" << std::endl;
-    std::cout << std::endl;
-    delay(5);
+    // std::cout << "You, the player, wake up in an abandoned building, your memory hazy from the chaos that ensued."<< std::endl;
+    // std::cout << "As you step outside, you're greeted by the sight of crumbling buildings, overgrown vegetation,"<< std::endl;
+    // std::cout << "and the distant groans of the undead.\n" << std::endl;
+    // std::cout << std::endl;
+    // delay(5);
 
-    std::cout << "Meanwhile, rumors spread of a powerful leader known as 'The Colonel,' who promises safety and "<< std::endl;
-    std::cout << "salvation in exchange for absolute loyalty. Some survivors swear allegiance to him, while others "<< std::endl;
-    std::cout << "see him as a tyrant exploiting the desperate for his own gain.\n" << std::endl;
-    std::cout << std::endl;
-    delay(5);
+    // std::cout << "You soon learn that survivors have grouped together in makeshift settlements, trying to rebuild "<< std::endl;
+    // std::cout << "some semblance of society amidst the chaos. But tensions rise as resources become scarce, and "<< std::endl;
+    // std::cout << "conflicts erupt between rival factions vying for control.\n" << std::endl;
+    // std::cout << std::endl;
+    // delay(5);
 
-    std::cout << "As you navigate this dangerous world, you'll encounter various characters with their own agendas "<< std::endl;
-    std::cout << "and stories. You'll have to make tough decisions: Who can you trust? Will you join a faction, or "<< std::endl;
-    std::cout << "remain independent? And ultimately, will you survive the looming human-zombie war that "<< std::endl;
-    std::cout << "threatens to consume what's left of humanity?\n" << std::endl;
-    std::cout << std::endl;
-    delay(6);
+    // std::cout << "Meanwhile, rumors spread of a powerful leader known as 'The Colonel,' who promises safety and "<< std::endl;
+    // std::cout << "salvation in exchange for absolute loyalty. Some survivors swear allegiance to him, while others "<< std::endl;
+    // std::cout << "see him as a tyrant exploiting the desperate for his own gain.\n" << std::endl;
+    // std::cout << std::endl;
+    // delay(5);
 
-    std::cout << "Prepare yourself, for in this world, every choice matters, and only the strong will survive." << std::endl;
-    std::cout << "Good luck with your journey!\n" << std::endl;
-    std::cout << std::endl;
-    delay(4);
+    // std::cout << "As you navigate this dangerous world, you'll encounter various characters with their own agendas "<< std::endl;
+    // std::cout << "and stories. You'll have to make tough decisions: Who can you trust? Will you join a faction, or "<< std::endl;
+    // std::cout << "remain independent? And ultimately, will you survive the looming human-zombie war that "<< std::endl;
+    // std::cout << "threatens to consume what's left of humanity?\n" << std::endl;
+    // std::cout << std::endl;
+    // delay(6);
+
+    // std::cout << "Prepare yourself, for in this world, every choice matters, and only the strong will survive." << std::endl;
+    // std::cout << "Good luck with your journey!\n" << std::endl;
+    // std::cout << std::endl;
+    // delay(4);
 
 
 
     // Create players
     std::vector <HumanCharacter*> players;
+    int Number_of_players = 0;
 
     while(true){
         input:
-        int option1;
-        std::cout << "Chose an option :" << std :: endl;
-        std::cout << "1. Create Character " << std :: endl;
-        std::cout << "2. Start The Game " << std :: endl;
-        std::cin >> option1;
-        std::cout << "\033[2J\033[1;1H";
+        int option1 = 0;
+        char choice;
+        int currentOption = 1;
+    
+        do {
+
+            ShowOptions(currentOption); 
+            
+            // Get user choice
+            choice = getch();
+            
+            switch (choice) 
+            {
+                case 'w': // Move up
+                case 'W':
+                    if (currentOption == 1)
+                    {
+                        currentOption = 2;
+                        break;
+                    }
+                    else
+                        currentOption -= 1;
+
+                    break;
+                case 's': // Move down
+                case 'S':
+                    if (currentOption == 2)
+                    {
+                        currentOption = 1;
+                        break;
+                    }
+                    else
+                        currentOption += 1;
+                    break;
+                case '\r': // Enter key
+                    if (currentOption == 1)
+                    {
+                        option1 = 1;
+                    }
+                    else
+                    {
+                        option1 = 2;
+                    }
+                    
+                default:
+                    break;
+            }
+            
+            // Clear screen
+            std::cout << "\033[2J\033[1;1H";
+
+        } while (option1 != 1 and option1 != 2); 
+
 
         if(option1 == 1){
             //Create character
-
+            Number_of_players ++;
             std::cout << "Enter your name: " << std::endl;
             std ::string name,gender;
             int health,stamina, skilfire, skillcold, age, level, point, money;
@@ -1831,19 +2199,21 @@ int main(){
             // HumanCharacter CopyPl = Player;
             players.push_back(Player);
         }
-        else if(option1 == 2){
+        else if(option1 == 2 and Number_of_players > 0){
             break;
         }
-        else{
-            std::cout << "Invalid Option!" << std::endl;
-            goto input;
+        else if (option1 == 2 and Number_of_players == 0)
+        {
+            std::cout << "Create a Character First!\n";
         }
+        
+        // else{
+        //     std::cout << "Invalid Option!" << std::endl;
+        //     goto input;
+        // }
 
     }
 
-    // for(HumanCharacter* i: players){
-    //     std::cout << i->GetName()<< "\n";
-    // }
 
     // std::cout <<"Please Enter Your :";
     // std ::string name,gender;
@@ -1866,12 +2236,14 @@ int main(){
  
     
     // ---------------------------------------------------
+    // Start game:
     while (true)
     {   
         int t = rand()%100;
         
-        if (t > 30)
+        if (t > 50)
         {
+            // Have to make this random
             std::cout<<"Select Enemy:\n1.Zombie\n2.Strong Zombie\n3.Human\n";
             int Enemy;
             std::cin>>Enemy;
@@ -1890,15 +2262,73 @@ int main(){
                 {
                     if(random == 0)
                     {
+                        int t = 0;
+                        // int temp;
+                        int currentoption = 1;
+                        char choice;
                         Fight displayFight(EnemyZombie,players);
-                        std::cout <<"\n1.Upgrade\n2.Items\n3.Fight\n";
-                        int t;
-                        std::cin >>t;
+                        // 88888888**********************222222222222222
+                        // std::cout <<"\n1.Upgrade\n2.Items\n3.Fight\n";
+                        do
+                        {
+                            ShowMenu(currentoption);
+                            choice = getch();
+
+                            switch (choice)
+                            {
+                                case 'w': 
+                                case 'W':
+                                    if (currentoption == 1)
+                                    {
+                                        currentoption = 3;
+                                        break;
+                                    }
+                                    else
+                                        currentoption -= 1;
+                                break;
+
+                                case 's': 
+                                case 'S':
+                                    if (currentoption == 3)
+                                    {
+                                        currentoption = 1;
+                                        break;
+                                    }
+                                    else
+                                        currentoption += 1;
+                                break;
+
+                                case '\r': 
+                                    if (currentoption == 1)
+                                    {
+                                        t = 1;
+                                        break;
+                                    }
+                                    else if (currentoption == 2)
+                                    {
+                                        t = 2;
+                                    }
+                                    else
+                                    {
+                                        t = 3;
+                                    }
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                            std::cout << "\033[2J\033[1;1H";
+
+
+                        } while (t == 0);
+                        
                         displayFight.ChoiceOfAction(t);
 
                         if (EnemyZombie->GetHealth() <= 0)
                         {
-                            std::cout<< "You Are Win!";
+                            std::string win_sentence = Wining_Sentence();
+                            std::cout<< "\n" << win_sentence << "\n";
+                            delay(4);
                             for (int i = 0; i < players.size(); i++)
                             {
                                 HumanCharacter Player = *players[i];
@@ -1935,7 +2365,9 @@ int main(){
                         
                         if (health_check == 0)
                         {
-                            std::cout<<"\nYou Lost!\n";
+                            std::string lose_sentence = Losing_Sentence();
+                            std::cout<< "\n" << lose_sentence << "\n";
+                            delay(4);
                             for (int i = 0; i < players.size(); i++)
                             {
                                 // need to be check again
@@ -2149,116 +2581,123 @@ int main(){
         }
         else
         {
+            char choice;
+            int temp = 0;
             while (true)
             {
-            int Option= 0;
-            HumanCharacter Player = *players[0];
+                // int temp = 0;
+                int currentoption = 1;
+                HumanCharacter Player = *players[0];
                 Shop shop(&Player);
-                std::cout<<"Money :"<<Player.GetMoney()<<"$\n";
-                shop.ShowShop();
+
+                do {
+                    std::cout<<"Money :"<<Player.GetMoney()<<"$\n";
+                    shop.ShowShop(currentoption);
+
+                    choice = getch();
+
+                    switch (choice) {
+                        case 'w': 
+                        case 'W':
+                            // currentoption = (currentoption == 1) ? 3 : currentoption - 1;
+                            if (currentoption == 1)
+                            {
+                                currentoption = 14;
+                                break;
+                            }
+                            else
+                                currentoption -= 1;
+                            break;
+                        case 's': 
+                        case 'S':
+                            if (currentoption == 14)
+                            {
+                                currentoption = 1;
+                                break;
+                            }
+                            else
+                                currentoption += 1;
+                            // currentoption = (currentoption == 3) ? 1 : currentoption + 1;
+                            break;
+                            
+                        case '\r': 
+                            if (currentoption == 14)
+                            {
+                                temp = 15;
+                                break;
+                            }
+                            else
+                            {
+                                shop.BuyItem(currentoption);
+                            }
+                            
+                            break;
+
+                        default:
+                            break;
+                    }
+                    std::cout << "\033[2J\033[1;1H";
+
+                } while (temp != 15);
+                break;   
                 
-                std::cin >>Option;
-                if(Option >=14)
-                {
-                    break;
-                }
-                shop.BuyItem(Option);
             }
+
+
             
         }
     }
-
-
-
-
-
-    /*
-    // Story
-    std::cout << "In a not-so-distant future, a mysterious virus outbreak has ravaged the world,"<< std::endl;
-    std::cout << "turning the majority of the population into mindless zombies."<< std::endl;
-    std::cout << "The few remaining humans struggle to survive in a post-apocalyptic landscape filled with danger and despair." << std::endl;
-
-    std::cout << "You, the player, wake up in an abandoned building, your memory hazy from the chaos that ensued."<< std::endl;
-    std::cout << "As you step outside, you're greeted by the sight of crumbling buildings, overgrown vegetation,"<< std::endl;
-    std::cout << "and the distant groans of the undead." << std::endl;
-    std::cout << std::endl;
-    std::cout << "You soon learn that survivors have grouped together in makeshift settlements, trying to rebuild "<< std::endl;
-    std::cout << "some semblance of society amidst the chaos. But tensions rise as resources become scarce, and "<< std::endl;
-    std::cout << "conflicts erupt between rival factions vying for control." << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "Meanwhile, rumors spread of a powerful leader known as 'The Colonel,' who promises safety and "<< std::endl;
-    std::cout << "salvation in exchange for absolute loyalty. Some survivors swear allegiance to him, while others "<< std::endl;
-    std::cout << "see him as a tyrant exploiting the desperate for his own gain." << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "As you navigate this dangerous world, you'll encounter various characters with their own agendas "<< std::endl;
-    std::cout << "and stories. You'll have to make tough decisions: Who can you trust? Will you join a faction, or "<< std::endl;
-    std::cout << "remain independent? And ultimately, will you survive the looming human-zombie war that "<< std::endl;
-    std::cout << "threatens to consume what's left of humanity?" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "Prepare yourself, for in this world, every choice matters, and only the strong will survive." << std::endl;
-    std::cout << "Good luck with your journey!" << std::endl;
-    std::cout << std::endl;
-
-
 
     // Create players
-    std::vector <HumanCharacter*> players;
-    while(true){
-        input:
-        int option1;
-        std::cout << "Chose an option :" << std :: endl;
-        std::cout << "1. Create Character " << std :: endl;
-        std::cout << "2. Exit " << std :: endl;
-        std::cin >> option1;
-        std::cout << "\033[2J\033[1;1H";
+    // std::vector <HumanCharacter*> players;
+    // while(true){
+    //     input:
+    //     int option1;
+    //     std::cout << "Chose an option :" << std :: endl;
+    //     std::cout << "1. Create Character " << std :: endl;
+    //     std::cout << "2. Exit " << std :: endl;
+    //     std::cin >> option1;
+    //     std::cout << "\033[2J\033[1;1H";
 
-        if(option1 == 1){
-            //Create character
-            std::cout << "Enter your name: " << std::endl;
-            std ::string name,gender;
-            int health,stamina, skilfire, skillcold, age, level, point, money;
-            Item *currentWeapon;
-            Item * consumerItem;
-            std::vector<Item *> bagpack;
-            std::cin>>name;
-            std::cout << "\033[2J\033[1;1H";
-            std::cout<<"Gender: " << std::endl;
-            std::cin>>gender;
-            std::cout << "\033[2J\033[1;1H";
+    //     if(option1 == 1){
+    //         //Create character
+    //         std::cout << "Enter your name: " << std::endl;
+    //         std ::string name,gender;
+    //         int health,stamina, skilfire, skillcold, age, level, point, money;
+    //         Item *currentWeapon;
+    //         Item * consumerItem;
+    //         std::vector<Item *> bagpack;
+    //         std::cin>>name;
+    //         std::cout << "\033[2J\033[1;1H";
+    //         std::cout<<"Gender: " << std::endl;
+    //         std::cin>>gender;
+    //         std::cout << "\033[2J\033[1;1H";
 
-            std::cout<<"Age: " << std::endl;
-            std::cin>>age;
-            std::cout << "\033[2J\033[1;1H";
+    //         std::cout<<"Age: " << std::endl;
+    //         std::cin>>age;
+    //         std::cout << "\033[2J\033[1;1H";
 
             
-            std::vector<Item*>bag23;
-            bag23.push_back(&Gun1);
-            bag23.push_back(&fod);
-            bag23.push_back(&knife123);
-            HumanCharacter* Player = new HumanCharacter(name,1000,1000,&Gun1,&fod,bag23,8,10,age,gender,1,0,60);
-            // HumanCharacter CopyPl = Player;
-            players.push_back(Player);
-        }
-        else if(option1 == 2){
-            break;
-        }
-        else{
-            std::cout << "Invalid Number!" << std::endl;
-            goto input;
-        }
+    //         std::vector<Item*>bag23;
+    //         bag23.push_back(&Gun1);
+    //         bag23.push_back(&fod);
+    //         bag23.push_back(&knife123);
+    //         HumanCharacter* Player = new HumanCharacter(name,1000,1000,&Gun1,&fod,bag23,8,10,age,gender,1,0,60);
+    //         // HumanCharacter CopyPl = Player;
+    //         players.push_back(Player);
+    //     }
+    //     else if(option1 == 2){
+    //         break;
+    //     }
+    //     else{
+    //         std::cout << "Invalid Number!" << std::endl;
+    //         goto input;
+    //     }
 
-    }
-
-    // for(HumanCharacter* i: players){
-    //     std::cout << i->GetName()<< "\n";
     // }
-    */
+
+
   
-    
-    
 return 0;
 }
     
