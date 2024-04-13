@@ -2333,6 +2333,7 @@ std::cout<<RED<<"|___|___/|____/  |_| /____|\n";
         int option1 = 0;
         char choice;
         int currentOption = 1;
+
     
         do {
 
@@ -2382,19 +2383,35 @@ std::cout<<RED<<"|___|___/|____/  |_| /____|\n";
             std::cout << "\033[2J\033[1;1H";
 
         } while (option1 != 1 and option1 != 2); 
-
+    
+        std::string names[10];
+        int i = -1;
+        int flag = 1;
 
         if(option1 == 1){
             //Create character
-            Number_of_players ++;
-            std::cout << "Enter your name: " << std::endl;
+            
             std ::string name,gender;
+
+            std::cout << "Enter your name: " << std::endl;
             int health,stamina, skilfire, skillcold, age, level, point, money;
             Item *currentWeapon;
             Item * consumerItem;
             std::vector<Item *> bagpack;
             std::cin>>name;
-            std::cout << "\033[2J\033[1;1H";
+            for(int x=0;x<=i;x++){
+                if (names[x]==name){
+                    std::cout<<"This name already exists";
+                    flag = 0;
+                }
+            }
+            if (flag == 1){
+                i++;
+                names[i]=name;
+                std::cout << "\033[2J\033[1;1H";
+                Number_of_players ++;
+
+            }
 
             while (!Check_Gender(gender))
             {
