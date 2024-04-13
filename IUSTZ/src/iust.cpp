@@ -424,7 +424,7 @@ void ShowMenu(int a){
     void HumanCharacter::Increase_MoneyRatio(int a){
         Money_Ratio += a;
     }
-    Shop::Shop(std::vector<HumanCharacter*> players) : Gun1 (0, 11, 100, "gun1"),Gun2(0, 13, 140, "gun2") , Gun3(0, 17, 130, "gun3"), Grenade1(0, 9, 20, 1, "grenade1"), Grenade2(0, 21, 60, 1, "grenade2"), Stone(0, 4, 5, 1, "stone"), NinjaStar(0, 14, 20, 1, "ninjaStar"), TRknife(0, 8, 20, 1, "TRknife"), knife1(0, 8, 20, "knife1"), knife2(0, 8, 20, "knife2"), knife3(0, 8, 20, "knife3"),Beverage(7,0,30,1,"drink"),Food(0,6,3,1,"apple")
+    Shop::Shop(std::vector<HumanCharacter*> players) : Gun1 (0, 11, 100, "Desert Eagle"),Gun2(0, 13, 140, "M4") , Gun3(0, 17, 130, "HK-416"), Grenade1(0, 9, 20, 1, "grenade1"), Grenade2(0, 40, 60, 1, "TNT"), Stone(0, 4, 5, 1, "stone"), NinjaStar(0, 14, 20, 1, "ninjaStar"), TRknife(0, 8, 20, 1, "TRknife"), knife1(0, 8, 20, "KA-BAR"), knife2(0, 10, 30, "Fairbain-Sykes"), knife3(0, 20, 65, "Sword"),Beverage(7,0,30,1,"drink"),Food(0,30,3,1,"apple")
         {
             Players = players;
         }
@@ -438,132 +438,132 @@ void ShowMenu(int a){
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
             std::cout<< tempc << "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }
         else if (a == 2)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<< tempc <<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<tempc <<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }
         else if (a == 3)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<< tempc <<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<tempc <<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }
         else if (a == 4)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<<"1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<< tempc <<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<tempc <<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }        
         else if (a == 5)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<< tempc <<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<tempc <<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }        
         else if (a == 6)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<< tempc <<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<tempc <<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }        
         else if (a == 7)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< tempc << "7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<tempc <<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }        
         else if (a == 8)
@@ -571,113 +571,113 @@ void ShowMenu(int a){
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
             std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< tempc << "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<tempc << "8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }
         else if (a == 9)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< tempc <<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<tempc <<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }
         else if (a == 10)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<< tempc << "10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<tempc <<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }
         else if (a == 11)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< tempc << "11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<tempc <<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }
         else if (a == 12)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< tempc << "12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<tempc <<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }
         else if (a == 13)
         {
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
-            std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<  "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< tempc << "13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<tempc <<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
             std::cout << "14." << RED << "Exit\n" << WHITE;
         }
         else if (a == 14)
@@ -685,19 +685,19 @@ void ShowMenu(int a){
             std::cout<< "Welcome to shop \n";
             std::cout<<"----------------------------------- \n";
             std::cout<< "1 ." << RED << Gun1.GetName() << "      " << WHITE << Gun1.GetPrice() << "$" << "\n" ;
-            std::cout<<"2 ." << RED << Gun2.GetName() << "      " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"3 ." << RED << Gun3.GetName() << "      " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
-            std::cout<<"4 ." << BLUE << knife1.GetName() << "    " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
+            std::cout<<"2 ." << RED << Gun2.GetName() << "                " << WHITE << Gun2.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"3 ." << RED << Gun3.GetName() << "            " << WHITE << Gun3.GetPrice() << "$" << "\n" << WHITE;
+            std::cout<<"4 ." << BLUE << knife1.GetName() << "            " << WHITE << knife1.GetPrice() << " $" << "\n" << WHITE;
             std::cout<<"5 ." << BLUE << knife2.GetName() << "    " << WHITE << knife2.GetPrice() << " $" << "\n" << WHITE;
-            std::cout<<"6 ." << BLUE << knife3.GetName() << "    " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "   " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<< "8 ." << YELLOW << Grenade2.GetName() << "       " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"9 ." << YELLOW << Stone.GetName() << "     " << WHITE << Stone.GetPrice() << "  $" << "\n";
-            std::cout<<"10." << RED << NinjaStar.GetName() << " " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"11." << RED << TRknife.GetName() << "   " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"12." << CYAN << Beverage.GetName() << "     " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
-            std::cout<<"13." << GREEN << Food.GetName() << "     " << WHITE << Food.GetPrice() << "  $\n";
-            std::cout<< tempc << "14." << RED << "Exit\n" << WHITE;
+            std::cout<<"6 ." << BLUE << knife3.GetName() << "             " << WHITE << knife3.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"7 ." << YELLOW << Grenade1.GetName() << "          " << WHITE << Grenade1.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"8 ." << YELLOW << Grenade2.GetName() << "               " << WHITE << Grenade2.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"9 ." << YELLOW << Stone.GetName() << "             " << WHITE << Stone.GetPrice() << "  $" << "\n";
+            std::cout<<"10." << RED << NinjaStar.GetName() << "         " << WHITE << NinjaStar.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"11." << RED << TRknife.GetName() << "           " << WHITE << TRknife.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"12." << CYAN << Beverage.GetName() << "             " << WHITE << Beverage.GetPrice() << " $" << "\n"<< WHITE;
+            std::cout<<"13." << GREEN << Food.GetName() << "             " << WHITE << Food.GetPrice() << "  $\n";
+            std::cout << tempc << "14." << RED << "Exit\n" << WHITE;
         }
         
 
@@ -850,8 +850,12 @@ void ShowMenu(int a){
                 if (i->GetName() == Grenade1.GetName()) 
                 {
                     temp = 1;
-                    i->IncreaseNumber(Grenade1.GetNumber());
-                    Player->ManageMoney(1,Grenade1.GetPrice());
+                    if (Player->GetMoney()>= i->GetPrice())
+                    {
+                        i->IncreaseNumber(Grenade1.GetNumber());
+                        Player->ManageMoney(1,Grenade1.GetPrice());
+                    }
+                    
                 }
             }
             if (temp == 1){}
@@ -875,8 +879,12 @@ void ShowMenu(int a){
                 if (i->GetName() == Grenade2.GetName()) 
                 {
                     temp = 1;
-                    i->IncreaseNumber(Grenade2.GetNumber());
-                    Player->ManageMoney(1,Grenade2.GetPrice());
+                    if (Player->GetMoney()>= i->GetPrice())
+                    {
+                        i->IncreaseNumber(Grenade2.GetNumber());
+                        Player->ManageMoney(1,Grenade2.GetPrice());
+                    }
+                    
                 }
             }
             if (temp == 1){}
@@ -899,8 +907,12 @@ void ShowMenu(int a){
                 if (i->GetName() == Stone.GetName()) 
                 {
                     temp = 1;
-                    i->IncreaseNumber(Stone.GetNumber());
-                    Player->ManageMoney(1,Stone.GetPrice());
+                    if (Player->GetMoney()>= i->GetPrice())
+                    {
+                        i->IncreaseNumber(Stone.GetNumber());
+                        Player->ManageMoney(1,Stone.GetPrice());
+                    }
+                    
                 }
             }
             if (temp == 1){}
@@ -923,8 +935,12 @@ void ShowMenu(int a){
                 if (i->GetName() == NinjaStar.GetName()) 
                 {
                     temp = 1;
-                    i->IncreaseNumber(NinjaStar.GetNumber());
-                    Player->ManageMoney(1,NinjaStar.GetPrice());
+                    if (Player->GetMoney()>= i->GetPrice())
+                    {
+                        i->IncreaseNumber(NinjaStar.GetNumber());
+                        Player->ManageMoney(1,NinjaStar.GetPrice());
+                    }
+                    
                 }
             }
             if (temp == 1){}
@@ -947,8 +963,12 @@ void ShowMenu(int a){
                 if (i->GetName() == TRknife.GetName()) 
                 {
                     temp = 1;
-                    i->IncreaseNumber(TRknife.GetNumber());
-                    Player->ManageMoney(1,TRknife.GetPrice());
+                    if (Player->GetMoney()>= i->GetPrice())
+                    {
+                        i->IncreaseNumber(TRknife.GetNumber());
+                        Player->ManageMoney(1,TRknife.GetPrice());
+                    }
+                    
                 }
             }
             if (temp == 1){}
@@ -971,8 +991,12 @@ void ShowMenu(int a){
                 if (i->GetName() == Beverage.GetName()) 
                 {
                     temp = 1;
-                    i->IncreaseNumber(Beverage.GetNumber());
-                    Player->ManageMoney(1,Beverage.GetPrice());
+                    if (Player->GetMoney()>= i->GetPrice())
+                    {
+                        i->IncreaseNumber(Beverage.GetNumber());
+                        Player->ManageMoney(1,Beverage.GetPrice());
+                    }
+                    
                 }
             }
             if (temp == 1){}
@@ -995,8 +1019,12 @@ void ShowMenu(int a){
                 if (i->GetName() == Food.GetName()) 
                 {
                     temp = 1;
-                    i->IncreaseNumber(Food.GetNumber());
-                    Player->ManageMoney(1,Food.GetPrice());
+                    if (Player->GetMoney()>= i->GetPrice())
+                    {
+                        i->IncreaseNumber(Food.GetNumber());
+                        Player->ManageMoney(1,Food.GetPrice());
+                    }
+                    
                 }
             }
             if (temp == 1){}
@@ -1484,17 +1512,19 @@ void ShowMenu3(int a, HumanCharacter* player){
           {
                std::cout<<"    *";
            }
+        
         if (i->GetNumber()==1000000)
         {
             std::cout <<"\n";
         }
         else
         {
-            std::cout <<"    ("<<i->GetNumber()<<")\n";
             if (i->GetName() == player->GetConsumerItem()->GetName())
             {
-                std::cout<<"   *\n";
+                std::cout<<"   *";
             }
+            std::cout <<"    ("<<i->GetNumber()<<")\n";
+
         }
         num++;
         temp = "";
@@ -2053,4 +2083,6 @@ return 0;
 
 
     
+
+
 
