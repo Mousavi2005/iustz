@@ -1,6 +1,5 @@
 #include "../include/iust.hpp"
 
-// Icon
 std::string tempc = "   -> ";
 
 // Generate Zombie Name
@@ -292,9 +291,9 @@ void ShowMenu(int a){
         return Number;
     }
 
-
     // Temporary Constructer
     Temporary::Temporary(int energy,int damage,int price,int number,std::string name) :Item( energy, damage , price , name,number){}
+    
     // Temporary Class Functions
     void Temporary:: ReduceNumber(){
         int a = GetNumber();
@@ -311,20 +310,25 @@ void ShowMenu(int a){
     // Consumables Constructer
     Consumables::Consumables(int energy,int damage,int price,int number, std::string name):Temporary( energy, damage, price,number,name){}
     
-    // Per
+    // Permanent Constructer
     Permanent::Permanent(int energy,int damage,int price,std::string name) :Item( energy, damage,price, name,1000000) {}
+    
+    // Firearm Constructer
     Firearm::Firearm(int energy,int damage,int price,std::string name) : Permanent( energy, damage,price, name) {}
 
     int Firearm:: GetType()
     {
         return 0;
     }
+    
+    // ColdWeapon Constructer
     ColdWeapon::ColdWeapon(int energy,int damage,int price,std::string name) : Permanent( energy, damage,price, name) {}
     int ColdWeapon:: GetType()
     {
         return 1;
     }
 
+    // Character Constructer
     Character::Character(std::string name,int health,int stamina,Item* currentWeapon,std::vector<Item*> bagpack, Item* consumerItem ,int skillfire,int skillcold)
      {
         Name = name;
@@ -336,6 +340,8 @@ void ShowMenu(int a){
         SkillFire = skillfire;
         ConsumerItem = consumerItem;
     }
+    
+    // Character Class Functions
     int Character::GetSkillFire(){
         return SkillFire;
     }
@@ -405,6 +411,7 @@ void ShowMenu(int a){
         }
     }
     
+    // HumanCharacter Constructer
     HumanCharacter::HumanCharacter(std::string name,int health,int stamina , Item* currentWeapon,Item * consumerItem,std::vector<Item*> bagpack , int skilfire , int skillcold, int age,std::string gender,int level,int point, int money) : Character( name, health, stamina, currentWeapon, bagpack,consumerItem,skilfire, skillcold) {
         Age = age;
         Gender = gender;
@@ -412,6 +419,8 @@ void ShowMenu(int a){
         Point = point;
         Money = money;
     }
+    
+    // HumanCharacter Class Function
     int HumanCharacter::GetAge() {
         return Age;
     }
@@ -454,10 +463,13 @@ void ShowMenu(int a){
         Money_Ratio += a;
     }
     
+    // Shop Constructer
     Shop::Shop(std::vector<HumanCharacter*> players) : Gun1 (0, 11, 100, "gun1"),Gun2(0, 13, 140, "gun2") , Gun3(0, 17, 130, "gun3"), Grenade1(0, 9, 20, 1, "grenade1"), Grenade2(0, 21, 60, 1, "grenade2"), Stone(0, 4, 5, 1, "stone"), NinjaStar(0, 14, 20, 1, "ninjaStar"), TRknife(0, 8, 20, 1, "TRknife"), knife1(0, 8, 20, "knife1"), knife2(0, 8, 20, "knife2"), knife3(0, 8, 20, "knife3"),Beverage(7,0,30,1,"drink"),Food(0,6,3,1,"apple")
         {
             Players = players;
         }
+    
+    // Shop Class Functions
     int Shop::GetMoney(){
        return Players[0]->GetMoney();   
     }
@@ -1046,6 +1058,7 @@ void ShowMenu(int a){
         }
     } 
     
+    // Model Constructer
     Model::Model(std::string name,int health,int stamina,Item* currentWeapon,Item*consumerItem,std::vector<Item*> bagpack, int skillfire,int skillcold, int moneyenemy ,std::string gender, std::string type ) :Character( name, health, stamina, currentWeapon, bagpack,consumerItem,skillfire, skillcold)
     {
         MoneyEnemy = moneyenemy;
@@ -1110,6 +1123,8 @@ void ShowMenu(int a){
             Enemy = enemy;
             Player = player;
         }
+    
+    // Controller Functions
     void Controller::StateFight(State action)
     {
         Item* BestFire;
@@ -1614,9 +1629,6 @@ void ShowMenu(int a){
                 } while (Option == 0);
                 
                 
-                // for(;Option<4;)
-                // {
-                //     std::cin>>Option;
                     switch (Option)
                     {
                     case 1:
@@ -1651,17 +1663,10 @@ void ShowMenu(int a){
                         break;
                     
                     default:
-                        // std::cout <<"Invalid Command\n";
                         break;
+
                     }
-                    // goto input;
                 
-                // std::cout <<"Money:"<<Player->GetMoney()<<"$\n";
-                // std::cout <<"1.Increase Fire Skill By 5 Units  30$ ("<<Player->GetSkillFire() <<")"<<"\n2.Increase Cold Skill By 5 Units  20$ ";
-                // std::cout << "("<<Player->GetSkillCold() <<")\n";
-                // std::cout << "3.Increase Earning Money Ratio By 100%  60$ (" << Player->GetMoneyRatio() << ")\n";
-                // std::cout << "4.Exit\n";    
-                // }
             
             }
             
@@ -1669,7 +1674,6 @@ void ShowMenu(int a){
             {
                 int num = 1;
                 int select = 0;
-                // int yt = 77;
 
                 char choice3;
                 int currentoption = 1;
