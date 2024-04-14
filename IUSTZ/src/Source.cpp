@@ -11,15 +11,23 @@ int main(){
     ColdWeapon knife123(1,18,65,"The Combat Knife");
     Consumables fod(0,12,34,3,"apple");
 
+
     // Game Logo
-    std::cout << "\n\n\n\n\n\n\n\n\n\n";
-    std::cout <<RED<<"                                                                             _     _\n";
-    std::cout <<RED<<"                                                          _______  _ __ ___ | |__ (_)\n";
-    std::cout <<RED<<"                                                         |_  / _  | '_ ` _  | '_  | |\n";
-    std::cout <<RED<<"                                                          / / (_) | | | | | | |_) | |\n";
-    std::cout <<RED<<"                                                         /_______/|_| |_| |_|_.__/|_|\n";
-    std::cout <<RED<<"\n";
-    std::cout <<GREEN<<"********************************************************************************************************************************************"<<"\n";
+
+    std::cout<<RED<<"                                   ___ _   _ ____ _____ _____\n";
+    std::cout<<RED<<"                                  |_ _| | | / ___|_   _|__  /\n";
+    std::cout<<RED<<"                                   | || | | |___   | |   / /\n ";
+    std::cout<<RED<<"                                  | || |_| |___)  | |  / /_\n ";
+    std::cout<<RED<<"                                 |___|___/|____/  |_| /____|\n";
+
+    // std::cout << "\n\n\n\n\n\n\n\n\n\n";
+    // std::cout <<RED<<"                                                                             _     _\n";
+    // std::cout <<RED<<"                                                          _______  _ __ ___ | |__ (_)\n";
+    // std::cout <<RED<<"                                                         |_  / _  | '_ ` _  | '_  | |\n";
+    // std::cout <<RED<<"                                                          / / (_) | | | | | | |_) | |\n";
+    // std::cout <<RED<<"                                                         /_______/|_| |_| |_|_.__/|_|\n";
+    // std::cout <<RED<<"\n";
+    std::cout <<GREEN<<"***********************************************************************************************************************************"<<"\n";
     delay(3);
 
     std::cout << "\n\n\n";
@@ -28,43 +36,45 @@ int main(){
     std::cout << WHITE << "In a not-so-distant future, a mysterious virus outbreak has ravaged the world,"<< std::endl;
     std::cout << "turning the majority of the population into mindless zombies."<< std::endl;
     std::cout << "The few remaining humans struggle to survive in a post-apocalyptic landscape filled with danger and despair.\n\n" << std::endl;
-    delay(3);
+    delay(2);
 
     std::cout << "You, the player, wake up in an abandoned building, your memory hazy from the chaos that ensued."<< std::endl;
     std::cout << "As you step outside, you're greeted by the sight of crumbling buildings, overgrown vegetation,"<< std::endl;
     std::cout << "and the distant groans of the undead.\n" << std::endl;
     std::cout << std::endl;
-    delay(3);
+    delay(2);
 
     std::cout << "You soon learn that survivors have grouped together in makeshift settlements, trying to rebuild "<< std::endl;
     std::cout << "some semblance of society amidst the chaos. But tensions rise as resources become scarce, and "<< std::endl;
     std::cout << "conflicts erupt between rival factions vying for control.\n" << std::endl;
     std::cout << std::endl;
-    delay(3);
+    delay(2);
 
     std::cout << "Meanwhile, rumors spread of a powerful leader known as 'The Colonel,' who promises safety and "<< std::endl;
     std::cout << "salvation in exchange for absolute loyalty. Some survivors swear allegiance to him, while others "<< std::endl;
     std::cout << "see him as a tyrant exploiting the desperate for his own gain.\n" << std::endl;
     std::cout << std::endl;
-    delay(3);
+    delay(2);
 
     std::cout << "As you navigate this dangerous world, you'll encounter various characters with their own agendas "<< std::endl;
     std::cout << "and stories. You'll have to make tough decisions: Who can you trust? Will you join a faction, or "<< std::endl;
     std::cout << "remain independent? And ultimately, will you survive the looming human-zombie war that "<< std::endl;
     std::cout << "threatens to consume what's left of humanity?\n" << std::endl;
     std::cout << std::endl;
-    delay(3);
+    delay(2);
 
     std::cout << "Prepare yourself, for in this world, every choice matters, and only the strong will survive." << std::endl;
     std::cout << "Good luck with your journey!\n" << std::endl;
     std::cout << std::endl;
-    delay(3);
+    delay(2);
 
 
 
     // Create players
     std::vector <HumanCharacter*> players;
     int Number_of_players = 0;
+    int flag = 0;
+    int flag2 = 1;
 
     while(true){
         input:
@@ -132,13 +142,36 @@ int main(){
             //Create Players
             Number_of_players ++;
 
-            std::cout << "Enter your name: " << std::endl;
+            // std::cout << "Enter your name: " << std::endl;
             std ::string name,gender;
             int health,stamina, skilfire, skillcold, age, level, point, money;
             Item *currentWeapon;
             Item * consumerItem;
             std::vector<Item *> bagpack;
+            // std::cin>>name;
+            while (flag == 0)
+            {
+            std::cout << "Enter your name: " << std::endl;
             std::cin>>name;
+
+            
+            for(HumanCharacter* i:players)
+            {
+                if(i->GetName()==name)
+                {
+                    cout << "This name is existed\n";
+                    flag2 = 0;
+                }
+            }
+
+            if (flag2 == 1)
+            {
+                flag = 1;
+            }
+            flag2 = 1;
+            }
+            
+            flag = 0;
 
             // Clear Screen
             std::cout << "\033[2J\033[1;1H";
@@ -183,6 +216,7 @@ int main(){
             HumanCharacter* Player = new HumanCharacter(name,1000,1000,&Gun1,&fod,bag23,8,10,age,gender,1,0,60);
             players.push_back(Player);
         }
+        
         else if(option1 == 2 and Number_of_players > 0){
             break;
         }
