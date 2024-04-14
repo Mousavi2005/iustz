@@ -32,6 +32,7 @@ bool Check_Gender(std::string name);
 bool Check_Age(int age);
 std::string Clock();
 bool IS_Day(std::string clock);
+void delay(int seconds);
 void ShowOptions(int a);
 void ShowMenu(int a);
 
