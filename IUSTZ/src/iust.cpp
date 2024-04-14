@@ -1,6 +1,9 @@
 #include "../include/iust.hpp"
 
+// Icon
 std::string tempc = "   -> ";
+
+// Generate Zombie Name
 std::string Random_MaleZombie_Name(std::vector<std::string> names){
     srand(time(0));
     int temp = rand() % 10;
@@ -45,6 +48,7 @@ std::string Random_MaleZombie_Name(std::vector<std::string> names){
     
 }
 
+// Generate Zombie Name
 std::string Random_FemaleZombie_Name(std::vector<std::string> names){
     srand(time(0));
     int temp = rand() % 10;
@@ -89,7 +93,7 @@ std::string Random_FemaleZombie_Name(std::vector<std::string> names){
     
 }
 
-
+// Generate Win Sentance
 std::string Wining_Sentence(){
     srand(time(0));
     int temporary = rand() % 5;
@@ -116,6 +120,7 @@ std::string Wining_Sentence(){
      
 }
 
+// Generate Lose Sentance
 std::string Losing_Sentence(){
     srand(time(0));
     int temp = rand() % 5;
@@ -144,6 +149,7 @@ std::string Losing_Sentence(){
     
 }
 
+// Gender Handling
 bool Check_Gender(std::string name){
     if (name == "female" or name == "Female" or name == "woman" or name == "Woman")
     {
@@ -157,6 +163,7 @@ bool Check_Gender(std::string name){
         return false;
 }
 
+// Age Handling
 bool Check_Age(int age){
     if (age <= 7 or age >= 100)
     {
@@ -167,6 +174,7 @@ bool Check_Age(int age){
     
 }
 
+// Get Clock
 std::string Clock(){
 
     auto currentTime = std::chrono::system_clock::now();
@@ -177,6 +185,7 @@ std::string Clock(){
     return clock;
 }
 
+// Check Day
 bool IS_Day(std::string clock){
     int x = std::stoi(clock);
     if (18 <= x or x <= 5)
@@ -189,12 +198,14 @@ bool IS_Day(std::string clock){
 
 }
 
+// Stop Program
 void delay(int seconds) {
     
     std::this_thread::sleep_for(std::chrono::seconds(seconds));
 
 }
 
+// Show First Menu
 void ShowOptions(int a){
     if (a ==1 )
     {
@@ -211,6 +222,7 @@ void ShowOptions(int a){
 
 }
 
+// Show Second Menu
 void ShowMenu(int a){
     if (a == 1)
     {
@@ -233,6 +245,7 @@ void ShowMenu(int a){
     
 }
 
+// Item Constructer
     Item::Item(int energy,int damage,int price,std::string name,int number) {
         Energy = energy;
         Damage = damage;
@@ -240,6 +253,8 @@ void ShowMenu(int a){
         Name = name;
         Number = number;
     }
+
+// Item Class Functions 
     void Item:: SetEnergy(int energy){
         Energy = energy;
     }
@@ -277,7 +292,10 @@ void ShowMenu(int a){
         return Number;
     }
 
+
+    // Temporary Constructer
     Temporary::Temporary(int energy,int damage,int price,int number,std::string name) :Item( energy, damage , price , name,number){}
+    // Temporary Class Functions
     void Temporary:: ReduceNumber(){
         int a = GetNumber();
         SetNumber((a--));
@@ -286,8 +304,14 @@ void ShowMenu(int a){
         int a = GetNumber();
         SetNumber((a++));
     }
+    
+    // Throwable Constructer
     Throwable::Throwable(int energy,int damage,int price,int number, std::string name):Temporary( energy, damage, price,number,name){}
+    
+    // Consumables Constructer
     Consumables::Consumables(int energy,int damage,int price,int number, std::string name):Temporary( energy, damage, price,number,name){}
+    
+    // Per
     Permanent::Permanent(int energy,int damage,int price,std::string name) :Item( energy, damage,price, name,1000000) {}
     Firearm::Firearm(int energy,int damage,int price,std::string name) : Permanent( energy, damage,price, name) {}
 
