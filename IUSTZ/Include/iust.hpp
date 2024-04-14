@@ -60,6 +60,7 @@ private:
     int GetNumber();
     
 };
+
 class Temporary :public Item
 {
 private:
@@ -69,22 +70,26 @@ public:
     void ReduceNumber();
     void AddNumber();
 };
+
 class Throwable :public Temporary
 {
 public:
     Throwable(int energy,int damage,int price,int number, std::string name);
 };
+
 class Consumables :public Temporary
 {
 public:
     Consumables(int energy,int damage,int price,int number, std::string name);
 
 };
+
 class Permanent :public Item
 {
 public:
     Permanent(int energy,int damage,int price,std::string name) ;
 };
+
 class Firearm :public Permanent
 {
 public:
@@ -92,12 +97,14 @@ public:
     int GetType();
 
 };
+
 class ColdWeapon : public Permanent
 {
 public:
    ColdWeapon (int energy,int damage,int price,std::string name) ;
     int GetType();
 };
+
 class Character
 {
 private:
@@ -130,6 +137,7 @@ public:
     void Injury(int b,int a) ;
     void Activity(int b ,int a) ;
 };
+
 class HumanCharacter :public Character
 {
 private:
@@ -156,6 +164,7 @@ public:
     void Increase_MoneyRatio(int a);
     
 };
+
 class Shop
 {
 private:
@@ -179,6 +188,7 @@ public:
     void ShowShop(int a);
     void BuyItem(int Option,HumanCharacter* Player);
 };
+
 class Model :public Character
 {
 private:
@@ -193,12 +203,14 @@ public:
     int GetMoney();
     std::string GetGender();    
 };
+
 enum class State
 {
 Upgrade,
 Item,
 Attack
 };
+
 Firearm Gun1 (0, 11, 100, "Desert Eagle");
 Firearm Gun2(0, 13, 140, "M4");
 Firearm Gun3(0, 17, 130, "HK-416");
@@ -212,7 +224,9 @@ ColdWeapon knife2(1, 8, 20, "Fairbain-Sykes");
 ColdWeapon knife3(1, 8, 20, "Sword");
 Consumables Bevrage(7,0,30,rand()%10,"drink");
 Consumables Food(0,6,3,rand()%10,"apple");
+
 State ManageState(HumanCharacter* Player,Model* Enemy,State LastState);
+
 class Controller 
 {
 private:
@@ -234,8 +248,11 @@ public:
     
     void Display();
 };
+
 void ShowMenu2(int a, HumanCharacter*Player);
+
 void ShowMenu3(int a, HumanCharacter* player);
+
 class Fight 
 {
 private:
@@ -245,6 +262,7 @@ public:
     Fight(Model*enemy,std::vector<HumanCharacter*> players);
     void ChoiceOfAction(int choice,HumanCharacter*Player);
 };
+
 class Factory
 {
 private:
